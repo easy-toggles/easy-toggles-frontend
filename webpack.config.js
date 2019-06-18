@@ -26,15 +26,24 @@ module.exports = {
         use: [
           {
             loader: 'style-loader',
+            options: {
+              singleton: true
+            }
           },
           {
-            loader: 'css-loader',
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('postcss-import')(),
+                require('postcss-url')(),
+                require('autoprefixer')(),
+                require('cssnano')()
+              ]
+            }
           },
-          {
-            loader: 'less-loader'
-          },
+          'less-loader'
         ]
-      }
+      },
     ]
   },
   plugins: [
