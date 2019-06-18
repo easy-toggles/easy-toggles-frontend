@@ -25,15 +25,15 @@ class Details extends React.Component<Props, {}> {
         <footer>
           <div>
             <div className="application">
-              <label>
-                Application:
+              <label className="form-select">
+                Application
                 <select>
                   <option>shooping</option>
                 </select>
               </label>
 
-              <label>
-                Environment:
+              <label className="form-select">
+                Environment
                 <select>
                   <option>beta</option>
                 </select>
