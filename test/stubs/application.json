@@ -1,0 +1,92 @@
+{
+  "name": "shopping",
+  "environment": "dev",
+  "config": {
+    "dependsFeature": {
+      "dependsOn": ["disabledFeature"],
+      "enabled": true,
+      "rules": [
+        {
+          "country": ["EC"],
+          "routeType": ["DOM"]
+        },
+        {
+          "country": ["US"],
+          "routeType": ["INTER"]
+        }
+      ],
+      "turnsOff": []
+    },
+    "disabledFeature": {
+      "dependsOn": [],
+      "enabled": false,
+      "rules": [
+        {
+          "country": ["EC"]
+        }
+      ],
+      "turnsOff": []
+    },
+    "enabledFeature": {
+      "dependsOn": [],
+      "enabled": true,
+      "rules": [],
+      "turnsOff": []
+    },
+    "functionFeature": {
+      "dependsOn": [],
+      "enabled": true,
+      "rules": [
+        {
+          "device": ["desktop"]
+        }
+      ],
+      "turnsOff": ["enabledfeature", "zzzzzz"]
+    },
+    "mobileFeature": {
+      "dependsOn": [],
+      "enabled": true,
+      "rules": [
+        {
+          "device": ["mobile"]
+        }
+      ],
+      "turnsOff": []
+    },
+    "orFeature": {
+      "dependsOn": ["enabledfeature", "someFeature", "xxxxx"],
+      "enabled": true,
+      "rules": [
+        {
+          "country": ["EC"],
+          "routeType": ["DOM"]
+        },
+        {
+          "country": ["US"],
+          "routeType": ["INTER"]
+        }
+      ],
+      "turnsOff": []
+    },
+    "otherFeature": {
+      "dependsOn": [],
+      "enabled": true,
+      "rules": [
+        {
+          "country": ["US"]
+        }
+      ],
+      "turnsOff": []
+    },
+    "someFeature": {
+      "dependsOn": [],
+      "enabled": true,
+      "rules": [
+        {
+          "country": ["EC"]
+        }
+      ],
+      "turnsOff": []
+    }
+  }
+}

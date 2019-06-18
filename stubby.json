@@ -1,0 +1,21 @@
+[
+  {
+    "request": {
+      "url": "^/api/application/[0-9]*$",
+      "method": "PATCH"
+    },
+    "response": {
+      "status": 200
+    }
+  },
+  {
+    "request": {
+      "url": "^/api/application/[0-9]*$",
+      "method": "GET"
+    },
+    "response": {
+      "status": 200,
+      "file": "./test/stubs/application.json"
+    }
+  }
+]
