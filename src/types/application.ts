@@ -1,12 +1,10 @@
 export interface Application {
   name: string,
-  environment: string, 
   id: number
 }
 
 export interface ApplicationDetails {
   name: string,
-  environment: string, 
   config: Config
 }
 

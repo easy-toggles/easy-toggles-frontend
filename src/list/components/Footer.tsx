@@ -1,12 +1,25 @@
-import React, {RefObject} from 'react'
+import React from 'react'
 import { Application } from '../../types/application'
 
 class Footer extends React.Component<Props, State> {
+
+  constructor(props) {
+    super(props)
+    this.state = { current: null }
+  }
+
   private onChangeApplication(event) {
     const selectedApplication = event.target.value
+
     if (selectedApplication) {
+      
+      this.setState({ current: selectedApplication })
       this.props.changeApplication(selectedApplication)
     }
+  }
+
+  private onPublishClick(event) {
+    this.props.publish(this.state.current)
   }
 
   private listApplications() {
@@ -36,7 +49,7 @@ class Footer extends React.Component<Props, State> {
             Add feature
           </button>
 
-          <button className="publish-button" onClick={e => this.props.publish()}>
+          <button className="publish-button" onClick={e => this.onPublishClick(e)}>
             <i className="material-icons">publish</i>
             Publish
           </button>
@@ -53,7 +66,7 @@ interface Props {
 }
 
 interface State {
-  application: string
+  current: number
 }
 
 export default Footer

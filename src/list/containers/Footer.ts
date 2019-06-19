@@ -11,7 +11,7 @@ const mapStateToProps = ({ list: { applications } }: State): StateProps => {
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
   changeApplication: (id: number) => dispatch(listCreators.changeApplication({ id })),
-  publish: () => dispatch(detailsCreator.startPublish())
+  publish: (id: number) => dispatch(detailsCreator.startPublish({ id }))
 })
 
 interface StateProps {
