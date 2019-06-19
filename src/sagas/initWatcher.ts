@@ -1,4 +1,4 @@
-import { call, put, take} from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import * as listActions from '../list/listActions'
 
 function *initWatcher() {

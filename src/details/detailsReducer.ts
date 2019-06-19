@@ -5,8 +5,7 @@ import { State } from '../store'
 
 export const initialState: ApplicationDetails = {
   config: {},
-  name: null,
-  environment: null
+  name: null
 }
 
 const changeFeature = (state: State, action: actions.ChangeFeatureAction) => ({
