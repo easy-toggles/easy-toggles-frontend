@@ -3,8 +3,9 @@ import { Feature, Config } from '../types/application'
 
 const { types, creators } = createActions('details', {
   changeFeature: null,
-  publish: { url: 'api/application/:id', method: 'patch'},
-  loadConfig: { url: 'api/application/:id', method: 'get'}
+  startPublish: null,
+  publish: { url: 'api/applications/:id', method: 'patch'},
+  loadConfig: { url: 'api/applications/:id', method: 'get'}
 })
 
 export { types, creators }

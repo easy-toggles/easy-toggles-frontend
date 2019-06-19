@@ -1,9 +1,9 @@
 import { createReducers } from 'redux-arc'
-import { Application } from '../types/application'
+import { ApplicationDetails } from '../types/application'
 import * as actions from './detailsActions'
 import { State } from '../store'
 
-export const initialState: Application = {
+export const initialState: ApplicationDetails = {
   config: {},
   name: null,
   environment: null

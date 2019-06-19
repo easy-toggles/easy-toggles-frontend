@@ -1,25 +1,33 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { detailsReducer, initialState } from './details/detailsReducer'
+import { detailsReducer, initialState as detailsInitialState } from './details/detailsReducer'
+import { listReducer, initialState as listInitialState } from './list/listReducer'
 import thunkMiddleware from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
 import asyncMidleware from './asyncMiddleware'
+import sagas from './configureSagas'
 
 const reducer = combineReducers({
-  details: detailsReducer
+  details: detailsReducer,
+  list: listReducer
 })
 
 const buildInitialState = (): State => ({
-  details: initialState
+  details: detailsInitialState,
+  list: listInitialState
 })
 
 const configureStore = (preloadedState: State = buildInitialState()) => {
-  const middlewares = [thunkMiddleware, asyncMidleware]
+  const sagaMiddleware = createSagaMiddleware()
+  const middlewares = [thunkMiddleware, asyncMidleware, sagaMiddleware]
   const middlewareEnhancer = applyMiddleware(...middlewares)
 
   const enhancers = [middlewareEnhancer]
   const composedEnhancers = composeWithDevTools(...enhancers)
 
   const store = createStore(reducer, preloadedState, composedEnhancers)
+
+  sagaMiddleware.run(sagas)
 
   return store
 }

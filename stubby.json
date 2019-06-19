@@ -1,7 +1,7 @@
 [
   {
     "request": {
-      "url": "^/api/application/[0-9]*$",
+      "url": "^/api/applications/[0-9]*$",
       "method": "PATCH"
     },
     "response": {
@@ -10,12 +10,22 @@
   },
   {
     "request": {
-      "url": "^/api/application/[0-9]*$",
+      "url": "^/api/applications$",
       "method": "GET"
     },
     "response": {
       "status": 200,
-      "file": "./test/stubs/application.json"
+      "file": "./test/stubs/applications.json"
+    }
+  },
+  {
+    "request": {
+      "url": "^/api/applications/[0-9]*$",
+      "method": "GET"
+    },
+    "response": {
+      "status": 200,
+      "file": "./test/stubs/details.json"
     }
   }
 ]
