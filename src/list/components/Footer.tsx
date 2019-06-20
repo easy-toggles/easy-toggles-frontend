@@ -2,7 +2,6 @@ import React from 'react'
 import { Application } from '../../types/application'
 
 class Footer extends React.Component<Props, State> {
-
   constructor(props) {
     super(props)
     this.state = { current: null }
@@ -12,14 +11,9 @@ class Footer extends React.Component<Props, State> {
     const selectedApplication = event.target.value
 
     if (selectedApplication) {
-      
       this.setState({ current: selectedApplication })
       this.props.changeApplication(selectedApplication)
     }
-  }
-
-  private onPublishClick(event) {
-    this.props.publish(this.state.current)
   }
 
   private listApplications() {
@@ -37,19 +31,19 @@ class Footer extends React.Component<Props, State> {
           <div className="application">
             <label className="form-select">
               Application
-              <select onChange={e => this.onChangeApplication(e)}>
+              <select onChange={(e) => this.onChangeApplication(e)}>
                 <option></option>
                 {this.listApplications()}
               </select>
             </label>
           </div>
 
-          <button className="add-feature">
+          <button className="add-feature-button" onClick={(e) => this.props.addFeature()}>
             <i className="material-icons">add</i>
             Add feature
           </button>
 
-          <button className="publish-button" onClick={e => this.onPublishClick(e)}>
+          <button className="publish-button" onClick={(e) => this.props.publish(this.state.current)}>
             <i className="material-icons">publish</i>
             Publish
           </button>
@@ -61,7 +55,8 @@ class Footer extends React.Component<Props, State> {
 
 interface Props {
   applications: Application[]
-  changeApplication: Function,
+  changeApplication: Function
+  addFeature: Function
   publish: Function
 }
 

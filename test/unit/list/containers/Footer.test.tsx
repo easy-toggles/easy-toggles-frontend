@@ -1,6 +1,6 @@
 import React from 'react'
 import configureStore from 'redux-mock-store'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import Footer from '../../../../src/list/containers/Footer'
 import { types as detailsTypes } from '../../../../src/details/detailsActions'
 import { types as listTypes } from '../../../../src/list/listActions'
@@ -26,7 +26,7 @@ describe('Footer Container', () => {
 
   beforeEach(() => {
     store = mockStore(state)
-    wrapper = mount(<Footer store={store} />)
+    wrapper = shallow(<Footer store={store} />).dive()
   })
 
   test('dispatches change application action', () => {
@@ -37,7 +37,7 @@ describe('Footer Container', () => {
       }
     }
   
-    wrapper.find('select').simulate('change', { target: { value: 1 } })
+    wrapper.props().changeApplication(1)
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
@@ -50,9 +50,18 @@ describe('Footer Container', () => {
       }
     }
   
-    wrapper.find('select').simulate('change', { target: { value: 1 } })
-    wrapper.find('.publish-button').simulate('click')
+    wrapper.props().publish(1)
 
-    expect(store.getActions()[1]).toEqual(expectedAction)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+  })
+
+  test('dispatches add feature action', () => {
+    const expectedAction = {
+      type: detailsTypes.ADD_FEATURE
+    }
+  
+    wrapper.props().addFeature()
+
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })

@@ -11,6 +11,7 @@ const mapStateToProps = ({ list: { applications } }: State): StateProps => {
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
   changeApplication: (id: number) => dispatch(listCreators.changeApplication({ id })),
+  addFeature: () => dispatch(detailsCreator.addFeature()),
   publish: (id: number) => dispatch(detailsCreator.startPublish({ id }))
 })
 
@@ -19,8 +20,12 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  changeApplication: Function,
+  changeApplication: Function
+  addFeature: Function
   publish: Function
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Footer)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Footer)

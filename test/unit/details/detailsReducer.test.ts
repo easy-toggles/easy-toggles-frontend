@@ -1,10 +1,36 @@
-import configureStore from 'redux-mock-store'
 import * as actions from '../../../src/details/detailsActions'
-import asyncMiddleware from '../../../src/asyncMiddleware'
 import { detailsReducer } from '../../../src/details/detailsReducer'
 
 describe('Details Reducer', () => {
   const scenarios = [
+    {
+      name: 'adds feature',
+      action: {
+        type: actions.types.ADD_FEATURE
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true
+          },
+          newFeature: {
+            enabled: false,
+            rules: [],
+            dependsOn: [],
+            turnsOff: []
+          }
+        }
+      }
+    },
     {
       name: 'toggles feature',
       action: {
