@@ -7,6 +7,7 @@ describe('Rule Component', () => {
   const deleteCriteriaMock = jest.fn()
   const addCriteriaMock = jest.fn()
   const updateCriteriaValuesMock = jest.fn()
+  const renameCriteriaMock = jest.fn()
 
   let wrapper
 
@@ -17,7 +18,8 @@ describe('Rule Component', () => {
       deleteRule: deleteRuleMock,
       deleteCriteria: deleteCriteriaMock,
       addCriteria: addCriteriaMock,
-      updateCriteriaValues: updateCriteriaValuesMock
+      updateCriteriaValues: updateCriteriaValuesMock,
+      renameCriteria: renameCriteriaMock
     }
 
     wrapper = mount(<Rule {...props} />)
@@ -31,5 +33,16 @@ describe('Rule Component', () => {
       ['feature', 0, 'pokemon'],
       ['pikachu', 'psyduck', 'charizard']
     )
+  })
+
+  test('calls rename criteria handler', () => {
+    wrapper.find('EditableText label').simulate('click')
+
+    const input = wrapper.find('EditableText input')
+    input.getDOMNode().value = 'other-value'
+    input.simulate('change')
+    input.simulate('keyUp', { keyCode: 13 })
+
+    expect(renameCriteriaMock).toHaveBeenCalledWith(['feature', 0, 'pokemon'], 'other-value')
   })
 })

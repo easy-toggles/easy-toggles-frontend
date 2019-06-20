@@ -9,13 +9,14 @@ import '../styles/rule.less'
 
 class Rule extends React.Component<Props, {}> {
   getCriteria(name: string, values: string[]): React.ReactElement<HTMLElement> {
+    const path = append(name, this.props.path)
     return (
       <tr key={name}>
         <th>
-          <EditableText text={name} />
+          <EditableText text={name} onFocusOut={newValue => this.props.renameCriteria(path, newValue)} />
         </th>
         <td className="criteria-values">
-          <InputTag tags={values} onChange={tags => this.props.updateCriteriaValues(append(name, this.props.path), tags)} />
+          <InputTag tags={values} onChange={tags => this.props.updateCriteriaValues(path, tags)} />
         </td>
         <td>
           <Delete onClick={(e) => this.props.deleteCriteria(append(name, this.props.path))} />
@@ -57,6 +58,7 @@ interface Props {
   rule: RuleData
   path: Array<string | number>
   addCriteria: Function,
+  renameCriteria: (path: Array<string | number>, newName:string) => void,
   updateCriteriaValues: Function,
   deleteCriteria: Function
   deleteRule: Function

@@ -8,6 +8,7 @@ const { types, creators } = createActions('details', {
   addCriteria: null,
   deleteCriteria: null,
   updateCriteriaValues: null,
+  renameCriteria: null,
   startPublish: null,
   publish: { url: 'api/applications/:id', method: 'patch'},
   loadConfig: { url: 'api/applications/:id', method: 'get'}
@@ -23,6 +24,13 @@ export interface ChangeFeatureAction {
   }
 }
 
+export interface RenameCriteriaAction {
+  type: typeof types.RENAME_CRITERIA
+  payload: {
+    path: Array<string | number>,
+    newValue: string
+  }
+}
 export interface UpdateCriteriaValuesAction {
   type: typeof types.UPDATE_CRITERIA_VALUES
   payload: {

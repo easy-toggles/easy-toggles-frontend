@@ -91,6 +91,34 @@ describe('Details Reducer', () => {
       }
     },
     {
+      name: 'renames rule',
+      action: {
+        payload: {
+          path: ['someFeature', 0, 'criteria'],
+          newValue: 'pokemon'
+        },
+        type: actions.types.RENAME_CRITERIA
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ criteria: ['pikachu'] }]
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ pokemon: ['pikachu'] }]
+          }
+        }
+      }
+    },
+    {
       name: 'delete criteria',
       action: {
         payload: {
