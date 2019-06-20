@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Rules from '../../../../src/details/components/Rules'
-import Rule from '../../../../src/details/components/Rule'
+import Rule from '../../../../src/details/containers/Rule'
 
 describe('Rules Component', () => {
   let wrapper
@@ -12,7 +12,7 @@ describe('Rules Component', () => {
       }
     ]
 
-    wrapper = shallow(<Rules rules={data} />)
+    wrapper = shallow(<Rules rules={data} path={['feature']} />)
   })
 
   test('renders a list of rules', () => {
