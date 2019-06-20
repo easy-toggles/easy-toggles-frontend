@@ -3,12 +3,44 @@ import { shallow } from 'enzyme'
 import Rule from '../../../../src/details/components/Rule'
 
 describe('Rule Component', () => {
-  test('renders a list of rules', () => {
-    const data = {
-      pokemon: ['pikachu', 'psyduck']
-    }
-    const wrapper = shallow(<Rule rule={data} />)
+  const deleteRuleMock = jest.fn()
+  const deleteCriteriaMock = jest.fn()
+  const addCriteriaMock = jest.fn()
 
-    expect(wrapper.find('th').text()).toBe('pokemon')
+  let wrapper
+
+  beforeEach(() => {
+    const props = {
+      rule: { pokemon: ['pikachu', 'psyduck'] },
+      path: ['feature', 0],
+      deleteRule: deleteRuleMock,
+      deleteCriteria: deleteCriteriaMock,
+      addCriteria: addCriteriaMock
+    }
+    
+    wrapper = shallow(<Rule {...props} />)
   })
+
+  test('renders a list of criteria', () => {
+    expect(wrapper.find('th > EditableText').prop('text')).toBe('pokemon')
+  })
+
+  test('calls delete rule handler', () => {
+    wrapper.find('.delete-rule-button').simulate('click')
+
+    expect(deleteRuleMock).toHaveBeenCalledWith(['feature', 0])
+  })
+
+  test('calls add criteria handler', () => {
+    wrapper.find('.add-criteria-button').simulate('click')
+
+    expect(addCriteriaMock).toHaveBeenCalledWith(['feature', 0])
+  })
+
+  test('calls delete criteria handler', () => {
+    wrapper.find('Delete').simulate('click')
+
+    expect(deleteCriteriaMock).toHaveBeenCalledWith(['feature', 0, 'pokemon'])
+  })
+
 })
