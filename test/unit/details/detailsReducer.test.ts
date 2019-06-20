@@ -9,16 +9,15 @@ describe('Details Reducer', () => {
       name: 'toggles feature',
       action: {
         payload: {
-          name: 'someFeature',
+          path: ['someFeature'],
           data: {
-            enabled: false,
+            enabled: false
           }
         },
         type: actions.types.CHANGE_FEATURE
       },
       prevState: {
         name: 'app',
-        environment: 'dev',
         config: {
           someFeature: {
             enabled: true
@@ -27,10 +26,91 @@ describe('Details Reducer', () => {
       },
       expectedState: {
         name: 'app',
-        environment: 'dev',
         config: {
           someFeature: {
             enabled: false
+          }
+        }
+      }
+    },
+    {
+      name: 'delete rule',
+      action: {
+        payload: {
+          path: ['someFeature', 0]
+        },
+        type: actions.types.DELETE_RULE
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ criteria: [] }, { criteria: [] }]
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ criteria: [] }]
+          }
+        }
+      }
+    },
+    {
+      name: 'delete criteria',
+      action: {
+        payload: {
+          path: ['someFeature', 0, 'criteria']
+        },
+        type: actions.types.DELETE_CRITERIA
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ criteria: [], 'criteria-2': [] }, { criteria: [] }]
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'criteria-2': [] }, { criteria: [] }]
+          }
+        }
+      }
+    },
+    ,
+    {
+      name: 'add criteria',
+      action: {
+        payload: {
+          path: ['someFeature', 0]
+        },
+        type: actions.types.ADD_CRITERIA
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [], criteria: [] }]
           }
         }
       }

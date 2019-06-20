@@ -3,6 +3,9 @@ import { Feature, Config } from '../types/application'
 
 const { types, creators } = createActions('details', {
   changeFeature: null,
+  deleteRule: null,
+  addCriteria: null,
+  deleteCriteria: null,
   startPublish: null,
   publish: { url: 'api/applications/:id', method: 'patch'},
   loadConfig: { url: 'api/applications/:id', method: 'get'}
@@ -13,7 +16,7 @@ export { types, creators }
 export interface ChangeFeatureAction {
   type: typeof types.CHANGE_FEATURE
   payload: {
-    name: string,
+    path: Array<string | number>,
     data: Feature
   }
 }
