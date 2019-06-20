@@ -8,10 +8,11 @@ import { Rule as RuleData } from '../../types/application'
 
 interface Props {
   rules: RuleData[],
-  path: Array<string | number>
+  path: Array<string | number>,
+  addRule: Function
 }
 
-const listRules = ({ rules, path }: Props) => rules.map((rule, index) => {
+const listRules = (rules: RuleData[], path: Array<string | number>) => rules.map((rule, index) => {
   const props = {
     key: shortid.generate(),
     path: append(index, path),
@@ -20,15 +21,16 @@ const listRules = ({ rules, path }: Props) => rules.map((rule, index) => {
   return <Rule {...props} />
 })
 
-const Rules = (props: Props) => {
+const Rules = ({ rules, path, addRule}: Props) => {
   const componentProps = {
     buttons: {
       add: {
-        label: 'Add rule'
+        label: 'Add rule',
+        onClick: (e) => addRule(path)
       }
     }
   }
-  return <ActionList {...componentProps}>{listRules(props)}</ActionList>
+  return <ActionList {...componentProps}>{listRules(rules, path)}</ActionList>
 }
 
 export default Rules

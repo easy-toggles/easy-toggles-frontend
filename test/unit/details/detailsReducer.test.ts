@@ -34,6 +34,36 @@ describe('Details Reducer', () => {
       }
     },
     {
+      name: 'adds rule',
+      action: {
+        payload: {
+          path: ['someFeature']
+        },
+        type: actions.types.ADD_RULE
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [
+              { 'some-criteria': [] },
+              { criteria: [] }
+            ]
+          }
+        }
+      }
+    },
+    {
       name: 'delete rule',
       action: {
         payload: {

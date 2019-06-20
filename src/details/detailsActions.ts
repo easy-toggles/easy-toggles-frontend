@@ -3,6 +3,7 @@ import { Feature, Config } from '../types/application'
 
 const { types, creators } = createActions('details', {
   changeFeature: null,
+  addRule: null,
   deleteRule: null,
   addCriteria: null,
   deleteCriteria: null,

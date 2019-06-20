@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Feature from '../../../../src/details/components/Feature'
-import Rules from '../../../../src/details/components/Rules'
+import Rules from '../../../../src/details/containers/Rules'
 import DependsOn from '../../../../src/details/components/DependsOn'
 import TurnsOff from '../../../../src/details/components/TurnsOff'
 
