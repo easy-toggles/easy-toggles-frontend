@@ -49,8 +49,9 @@ class InputTag extends React.Component<Props, State> {
   }
 
   removeTag(tag) {
-    this.setState({ tags: this.state.tags.filter((item) => item !== tag) })
-    this.props.onChange(this.state.tags)
+    const tags = this.state.tags.filter((item) => item !== tag)
+    this.setState({ tags })
+    this.props.onChange(tags)
   }
 
   addTag() {
@@ -63,12 +64,9 @@ class InputTag extends React.Component<Props, State> {
       return
     }
 
-    this.setState({
-      tags: [...tags, tag],
-      value: ''
-    })
-
-    this.props.onChange(this.state.tags)
+    const newTags = [...tags, tag]
+    this.setState({ tags: newTags, value: '' })
+    this.props.onChange(newTags)
   }
 
   editPrevTag() {
@@ -77,11 +75,11 @@ class InputTag extends React.Component<Props, State> {
     const tag = tags.pop()
 
     this.setState({ tags, value: tag })
-    this.props.onChange(this.state.tags)
+    this.props.onChange(tags)
   }
 
   render() {
-    const { tags, value } = this.state
+    const { value, tags } = this.state
     return (
       <div className="form">
         <div className="tags">

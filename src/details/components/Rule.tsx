@@ -15,7 +15,7 @@ class Rule extends React.Component<Props, {}> {
           <EditableText text={name} />
         </th>
         <td className="criteria-values">
-          <InputTag tags={values} />
+          <InputTag tags={values} onChange={tags => this.props.updateCriteriaValues(append(name, this.props.path), tags)} />
         </td>
         <td>
           <Delete onClick={(e) => this.props.deleteCriteria(append(name, this.props.path))} />
@@ -56,9 +56,11 @@ class Rule extends React.Component<Props, {}> {
 interface Props {
   rule: RuleData
   path: Array<string | number>
-  addCriteria: Function
+  addCriteria: Function,
+  updateCriteriaValues: Function,
   deleteCriteria: Function
   deleteRule: Function
+  
 }
 
 export default Rule

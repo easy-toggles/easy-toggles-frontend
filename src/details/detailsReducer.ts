@@ -30,6 +30,14 @@ const addCriteria = (state: State, { payload }: actions.ChangeFeatureAction) => 
   })
 }
 
+const updateCriteriaValues = (state: State, { payload }: actions.UpdateCriteriaValuesAction) => {
+  const [feature, rule, criteria] = payload.path
+
+  return produce(state, draft => {
+    draft.config[feature]['rules'][rule][criteria] = payload.values
+  })
+}
+
 const deleteRule = (state: State, { payload }: actions.ChangeFeatureAction) => {
   const [feature, rule] = payload.path
 
@@ -57,6 +65,7 @@ const HANDLERS = {
   [actions.types.DELETE_RULE]: deleteRule,
   [actions.types.ADD_CRITERIA]: addCriteria,
   [actions.types.DELETE_CRITERIA]: deleteCriteria,
+  [actions.types.UPDATE_CRITERIA_VALUES]: updateCriteriaValues,
   [actions.types.LOAD_CONFIG.RESPONSE]: loadConfig
 }
 

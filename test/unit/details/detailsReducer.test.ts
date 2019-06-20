@@ -87,7 +87,6 @@ describe('Details Reducer', () => {
         }
       }
     },
-    ,
     {
       name: 'add criteria',
       action: {
@@ -111,6 +110,34 @@ describe('Details Reducer', () => {
           someFeature: {
             enabled: true,
             rules: [{ 'some-criteria': [], criteria: [] }]
+          }
+        }
+      }
+    },
+    {
+      name: 'updates criteria values',
+      action: {
+        payload: {
+          path: ['someFeature', 0, 'some-criteria'],
+          values: ['pikachu', 'charizard']
+        },
+        type: actions.types.UPDATE_CRITERIA_VALUES
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': ['pikachu', 'charizard'] }]
           }
         }
       }

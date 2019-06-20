@@ -23,44 +23,54 @@ describe('Details Container', () => {
 
   beforeEach(() => {
     store = mockStore(state)
-    wrapper = shallow(<Rule store={store} rule={rule} path={['feature', 0]}/>).dive()
+    wrapper = shallow(<Rule store={store} rule={rule} path={['feature', 0]} />)
   })
 
   test('dispatches delete criteria action', () => {
+    const path = ['feature', 0, 'criteria']
     const expectedAction = {
       type: types.DELETE_CRITERIA,
-      payload: {
-        path: ['feature', 0, 'criteria']
-      }
+      payload: { path }
     }
 
-    wrapper.find('Delete').simulate('click')
+    wrapper.props().deleteCriteria(path)
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   test('dispatches add criteria action', () => {
+    const path = ['feature', 0]
     const expectedAction = {
       type: types.ADD_CRITERIA,
-      payload: {
-        path: ['feature', 0]
-      }
+      payload: { path }
     }
 
-    wrapper.find('.add-criteria-button').simulate('click')
+    wrapper.props().addCriteria(path)
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   test('dispatches delete rule action', () => {
+    const path = ['feature', 0]
     const expectedAction = {
       type: types.DELETE_RULE,
-      payload: {
-        path: ['feature', 0]
-      }
+      payload: { path }
     }
 
-    wrapper.find('.delete-rule-button').simulate('click')
+    wrapper.props().deleteRule(path)
+
+    expect(store.getActions()[0]).toEqual(expectedAction)
+  })
+
+  test('dispatches update criteria values action', () => {
+    const path = ['feature', 0, 'criteria']
+    const values = ['value', 'other-value']
+    const expectedAction = {
+      type: types.UPDATE_CRITERIA_VALUES,
+      payload: { path, values }
+    }
+
+    wrapper.props().updateCriteriaValues(path, values)
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })

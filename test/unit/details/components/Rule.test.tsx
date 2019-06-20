@@ -6,6 +6,7 @@ describe('Rule Component', () => {
   const deleteRuleMock = jest.fn()
   const deleteCriteriaMock = jest.fn()
   const addCriteriaMock = jest.fn()
+  const updateCriteriaValuesMock = jest.fn()
 
   let wrapper
 
@@ -15,7 +16,8 @@ describe('Rule Component', () => {
       path: ['feature', 0],
       deleteRule: deleteRuleMock,
       deleteCriteria: deleteCriteriaMock,
-      addCriteria: addCriteriaMock
+      addCriteria: addCriteriaMock,
+      updateCriteriaValues: updateCriteriaValuesMock
     }
     
     wrapper = shallow(<Rule {...props} />)
@@ -42,5 +44,4 @@ describe('Rule Component', () => {
 
     expect(deleteCriteriaMock).toHaveBeenCalledWith(['feature', 0, 'pokemon'])
   })
-
 })

@@ -6,6 +6,7 @@ const { types, creators } = createActions('details', {
   deleteRule: null,
   addCriteria: null,
   deleteCriteria: null,
+  updateCriteriaValues: null,
   startPublish: null,
   publish: { url: 'api/applications/:id', method: 'patch'},
   loadConfig: { url: 'api/applications/:id', method: 'get'}
@@ -18,6 +19,14 @@ export interface ChangeFeatureAction {
   payload: {
     path: Array<string | number>,
     data: Feature
+  }
+}
+
+export interface UpdateCriteriaValuesAction {
+  type: typeof types.UPDATE_CRITERIA_VALUES
+  payload: {
+    path: Array<string | number>,
+    values: string[]
   }
 }
 
