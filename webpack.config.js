@@ -5,6 +5,7 @@ const stubHost = `http://localhost:${process.env.STUB_PORT || 8882}`
 
 module.exports = {
   entry: './src/index.tsx',
+  devtool: 'inline-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
   },
