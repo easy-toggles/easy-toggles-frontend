@@ -5,7 +5,7 @@ import { Feature as FeatureData } from '../../types/application'
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
   onChangeFeatureToggle: (name: string, data: FeatureData) => {
-    dispatch(creators.changeFeature({ name, data }))
+    dispatch(creators.changeFeature({ path: [name], data }))
   }
 })
 

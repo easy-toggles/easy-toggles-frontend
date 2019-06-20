@@ -11,7 +11,7 @@ const Delete = ({ onClick }: Props) => (
 )
 
 interface Props {
-  onClick: Function
+  onClick?: Function
 }
 
 export default Delete

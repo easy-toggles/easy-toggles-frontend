@@ -2,7 +2,6 @@ import React from 'react'
 import { UnmountClosed } from 'react-collapse'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Switch from '../../components/switch/Switch'
-import Delete from '../../components/delete/Delete'
 import Rules from './Rules'
 import DependsOn from './DependsOn'
 import TurnsOff from './TurnsOff'
@@ -49,7 +48,7 @@ class Feature extends React.Component<Props, State> {
             </TabList>
 
             <TabPanel>
-              <Rules rules={this.props.feature.rules} />
+              <Rules rules={this.props.feature.rules} path={[this.props.name]} />
             </TabPanel>
             <TabPanel>
               <DependsOn features={this.props.feature.dependsOn} />

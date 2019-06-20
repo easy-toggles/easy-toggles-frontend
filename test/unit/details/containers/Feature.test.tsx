@@ -16,7 +16,7 @@ describe('Feature Container', () => {
     const expectedAction = {
       type: types.CHANGE_FEATURE,
       payload: {
-        name: 'someFeature',
+        path: ['someFeature'],
         data: someFeature
       }
     }
