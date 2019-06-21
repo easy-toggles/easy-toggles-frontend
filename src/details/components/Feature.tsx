@@ -6,6 +6,7 @@ import Rules from '../containers/Rules'
 import DependsOn from './DependsOn'
 import TurnsOff from './TurnsOff'
 import { Feature as FeatureData } from '../../types/application'
+import Delete from '../../components/delete/Delete'
 
 import '../styles/feature.less'
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Application } from '../../types/application'
 
+import './footer.less'
+
 class Footer extends React.Component<Props, State> {
   constructor(props) {
     super(props)
@@ -29,24 +31,26 @@ class Footer extends React.Component<Props, State> {
       <footer>
         <div>
           <div className="application">
-            <label className="form-select">
-              Application
-              <select onChange={(e) => this.onChangeApplication(e)}>
-                <option></option>
-                {this.listApplications()}
-              </select>
-            </label>
+            <div className="form-select">
+              <label htmlFor="application-select">Application</label>
+              <select id="application-select" onChange={(e) => this.onChangeApplication(e)}>
+                  <option></option>
+                  {this.listApplications()}
+                </select>
+            </div>
           </div>
 
-          <button className="add-feature-button" onClick={(e) => this.props.addFeature()}>
-            <i className="material-icons">add</i>
-            Add feature
-          </button>
+          <div className="action-bar">
+            <button className="add-feature-button" onClick={(e) => this.props.addFeature()}>
+              <i className="material-icons">add</i>
+              Add feature
+            </button>
 
-          <button className="publish-button" onClick={(e) => this.props.publish(this.state.current)}>
-            <i className="material-icons">publish</i>
-            Publish
-          </button>
+            <button className="publish-button" onClick={(e) => this.props.publish(this.state.current)}>
+              <i className="material-icons">publish</i>
+              Publish
+            </button>
+          </div>
         </div>
       </footer>
     )
