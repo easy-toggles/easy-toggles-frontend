@@ -17,6 +17,13 @@ const { types, creators } = createActions('details', {
 
 export { types, creators }
 
+export interface AddFeatureAction {
+  type: typeof types.ADD_FEATURE
+  payload: {
+    name: string
+  }
+}
+
 export interface ChangeFeatureAction {
   type: typeof types.CHANGE_FEATURE
   payload: {

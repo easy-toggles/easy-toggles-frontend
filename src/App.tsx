@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Details from './details/containers/Details'
 import Footer from './list/containers/Footer'
+import InputModal from './modal/containers/InputModal'
 
 import './app.less'
 class App extends React.Component<{}, {}> {
@@ -12,6 +13,7 @@ class App extends React.Component<{}, {}> {
         </header>
         <Details />
         <Footer />
+        <InputModal />
       </div>
     )
   }

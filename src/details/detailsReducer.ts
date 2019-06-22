@@ -23,9 +23,9 @@ const changeFeature = (state: State, action: actions.ChangeFeatureAction) => {
   }
 }
 
-const addFeature = (state: State) => {
+const addFeature = (state: State, { payload }: actions.AddFeatureAction) => {
   return produce(state, draft => {
-    draft.config.newFeature = {
+    draft.config[payload.name] = {
       enabled: false,
       rules: [],
       dependsOn: [],

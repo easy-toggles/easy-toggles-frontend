@@ -4,6 +4,7 @@ import { shallow } from 'enzyme'
 import Footer from '../../../../src/list/containers/Footer'
 import { types as detailsTypes } from '../../../../src/details/detailsActions'
 import { types as listTypes } from '../../../../src/list/listActions'
+import { types as modalTypes } from '../../../../src/modal/modalActions'
 import asyncMiddleware from '../../../../src/asyncMiddleware'
 import { State } from '../../../../src/store'
 
@@ -55,9 +56,15 @@ describe('Footer Container', () => {
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
-  test('dispatches add feature action', () => {
+  test('dispatches open modal action with add feature properties', () => {
     const expectedAction = {
-      type: detailsTypes.ADD_FEATURE
+      type: modalTypes.OPEN,
+      payload: {
+        action: 'addFeature',
+        content: {
+          label: 'Add feature'
+        }
+      }
     }
   
     wrapper.props().addFeature()

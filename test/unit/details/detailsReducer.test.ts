@@ -6,7 +6,10 @@ describe('Details Reducer', () => {
     {
       name: 'adds feature',
       action: {
-        type: actions.types.ADD_FEATURE
+        type: actions.types.ADD_FEATURE,
+        payload: {
+          name: 'myFeature'
+        }
       },
       prevState: {
         name: 'app',
@@ -22,7 +25,7 @@ describe('Details Reducer', () => {
           someFeature: {
             enabled: true
           },
-          newFeature: {
+          myFeature: {
             enabled: false,
             rules: [],
             dependsOn: [],
