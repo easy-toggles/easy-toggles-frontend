@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Delete from '../../../../src/components/delete/Delete'
+import IconButton, { IconButtonTypes } from '../../../../src/components/iconButton/IconButton'
 
 describe('Delete Component', () => {
   const onClickMock = jest.fn()
@@ -8,10 +8,15 @@ describe('Delete Component', () => {
 
   beforeEach(() => {
     const props = {
-      onClick: onClickMock
+      onClick: onClickMock,
+      type: IconButtonTypes.Delete
     }
 
-    wrapper = shallow(<Delete {...props} />)
+    wrapper = shallow(<IconButton {...props} />)
+  })
+
+  test('renders icon', () => {
+    expect(wrapper.find('button i').text()).toEqual(IconButtonTypes.Delete)
   })
 
   test('calls on click handler', () => {

@@ -1,3 +1,5 @@
+@import (reference) '../../styles/variables.less';
+@import '../../styles/mixins.less';
 
 footer {
   position: fixed;
@@ -12,6 +14,11 @@ footer {
     display: flex;
     padding: 20px;
     align-items: center;
+    flex-direction: column;
+
+    .Medium({
+      flex-direction: row;
+    });
 
     * {
       margin-right: 20px;
@@ -23,23 +30,30 @@ footer {
   }
 
   .form-select {
-    color: #999;
-    border-radius: 15px;
+    color: @medium-grey;
+    border-radius: 10em;
     display: flex;
-    max-width: 400px;
     align-items: center;
-    border: 1px dotted #666;
+    border: 1px dotted @dark-grey;
 
-    label {
-      margin-left: 15px;
+    .Medium({
+      max-width: 350px;
+    });
+
+    button {
+      background: @lighter-grey;
+      color: @dark-grey;
+      border-radius: 10em;
+      border-right: 1px dotted @dark-grey;
+      padding: 5px 15px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
     select {
       border-radius: 0 15px 15px 0;
       border: none;
-      border-left: 1px dotted #666;
-      margin-left: 10px;
-      
+      border-left: 1px dotted @dark-grey;
       flex-grow: 1;
     }
   }
@@ -49,5 +63,18 @@ footer {
     justify-content: space-between;
     align-content: stretch;
     align-items: stretch;
+  }
+
+  .application {
+    margin-bottom: 20px;
+    width: 100%;
+    margin-left: 20px;
+
+    .Medium({
+      flex-grow: 1;
+      margin-bottom: 0;
+      width: auto;
+    });
+   
   }
 }

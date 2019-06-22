@@ -1,6 +1,6 @@
 import React from 'react'
 import ActionList from '../../components/actionList/ActionList'
-import Delete from '../../components/delete/Delete'
+import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
 
 interface Props {
   features: string[]
@@ -12,7 +12,7 @@ const listFeaturesToTurnOff = (features: string[]) => {
       <tr key={feature}>
         <th>{feature}</th>
         <td>
-          <Delete />
+          <IconButton  type={IconButtonTypes.Delete} />
         </td>
       </tr>
     )
@@ -31,6 +31,7 @@ const TurnsOff = ({ features }: Props) => {
   const props = {
     buttons: {
       add: {
+        icon: 'add',
         label: 'Add feature to turn off',
         onClick: () => {}
       }

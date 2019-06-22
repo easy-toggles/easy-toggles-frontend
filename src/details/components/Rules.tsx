@@ -5,26 +5,28 @@ import ActionList from '../../components/actionList/ActionList'
 import Rule from '../containers/Rule'
 import { Rule as RuleData } from '../../types/application'
 
-
 interface Props {
-  rules: RuleData[],
-  path: Array<string | number>,
+  rules: RuleData[]
+  path: Array<string | number>
   addRule: Function
 }
 
-const listRules = (rules: RuleData[], path: Array<string | number>) => rules.map((rule, index) => {
-  const props = {
-    key: shortid.generate(),
-    path: append(index, path),
-    rule
-  }
-  return <Rule {...props} />
-})
+const listRules = (rules: RuleData[], path: Array<string | number>) =>
+  rules.map((rule, index) => {
+    const props = {
+      key: shortid.generate(),
+      path: append(index, path),
+      rule
+    }
+    return <Rule {...props} />
+  })
 
-const Rules = ({ rules, path, addRule}: Props) => {
+const Rules = ({ rules, path, addRule }: Props) => {
   const componentProps = {
+    className: 'rules',
     buttons: {
-      add: {
+      addRule: {
+        icon: 'add',
         label: 'Add rule',
         onClick: (e) => addRule(path)
       }

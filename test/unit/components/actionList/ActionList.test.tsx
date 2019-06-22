@@ -3,16 +3,23 @@ import { shallow } from 'enzyme'
 import ActionList from '../../../../src/components/actionList/ActionList'
 
 describe('ActionList Component', () => {
-  const onAddButtonClickMock = jest.fn()
+  const onButtonClicked = jest.fn()
   let wrapper
 
   beforeEach(() => {
     const props = {
       buttons: {
         add: {
+          icon: 'add',
           label: 'Label',
-          onClick: onAddButtonClickMock
+          onClick: onButtonClicked
+        },
+        delete: {
+          icon: 'delete',
+          label: 'Label',
+          onClick: onButtonClicked
         }
+
       },
       children: <p>children</p>
     }
@@ -20,14 +27,14 @@ describe('ActionList Component', () => {
     wrapper = shallow(<ActionList {...props} />)
   })
 
-  test('renders add button label', () => {
-    expect(wrapper.find('button > span').text()).toEqual('Label')
+  test('renders button label', () => {
+    expect(wrapper.find('button').at(0).find('span').text()).toEqual('Label')
   })
 
-  test('calls add button handler', () => {
-    wrapper.find('button').simulate('click')
+  test('calls button handler', () => {
+    wrapper.find('button').at(0).simulate('click')
 
-    expect(onAddButtonClickMock).toHaveBeenCalled()
+    expect(onButtonClicked).toHaveBeenCalled()
   })
 
   test('renders children', () => {

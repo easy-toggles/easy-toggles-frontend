@@ -41,7 +41,7 @@ describe('Rule Component', () => {
   })
 
   test('calls delete criteria handler', () => {
-    wrapper.find('Delete').simulate('click')
+    wrapper.find('IconButton').simulate('click')
 
     expect(deleteCriteriaMock).toHaveBeenCalledWith(['feature', 0, 'pokemon'])
   })

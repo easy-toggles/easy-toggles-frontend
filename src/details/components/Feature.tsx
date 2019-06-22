@@ -6,7 +6,7 @@ import Rules from '../containers/Rules'
 import DependsOn from './DependsOn'
 import TurnsOff from './TurnsOff'
 import { Feature as FeatureData } from '../../types/application'
-import Delete from '../../components/delete/Delete'
+import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
 
 import '../styles/feature.less'
 
@@ -38,6 +38,8 @@ class Feature extends React.Component<Props, State> {
         <div className="feature-item">
           <h2 onClick={(e) => this.handleClick(e)}>{this.props.name}</h2>
           <Switch checked={this.props.feature.enabled} onChange={(e) => this.handleToggle(e)} />
+          <IconButton  type={IconButtonTypes.Edit} onClick={() => {}} />
+          <IconButton  type={IconButtonTypes.Delete} onClick={() => {}} />
         </div>
 
         <UnmountClosed isOpened={this.state.isOpened}>

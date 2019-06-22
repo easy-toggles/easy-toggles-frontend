@@ -1,6 +1,6 @@
 import React, { RefObject } from 'react'
 import { append } from 'ramda'
-import Delete from '../../components/delete/Delete'
+import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
 import { Rule as RuleData } from '../../types/application'
 import InputTag from '../../components/inputTag/InputTag'
 import EditableText from '../../components/editableText/EditableText'
@@ -19,7 +19,7 @@ class Rule extends React.Component<Props, {}> {
           <InputTag tags={values} onChange={tags => this.props.updateCriteriaValues(path, tags)} />
         </td>
         <td>
-          <Delete onClick={(e) => this.props.deleteCriteria(append(name, this.props.path))} />
+          <IconButton  type={IconButtonTypes.Delete} onClick={(e) => this.props.deleteCriteria(append(name, this.props.path))} />
         </td>
       </tr>
     )

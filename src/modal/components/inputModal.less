@@ -1,13 +1,19 @@
 @import (reference) '../../styles/variables.less';
+@import '../../styles/mixins.less';
 
 .input-modal {
   position: absolute;
   top: 30%;
-  left: calc(50% - 250px);
+  right: 40px;
+  left: 40px;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  width: 500px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+  .Medium({
+    max-width: 500px;
+    left: calc(50% - 250px);
+  });
 
   label {
     display: block;
@@ -25,23 +31,21 @@
     input {
       width: 100%;
     }
-  
+
     .action-bar {
       margin-top: 15px;
       display: flex;
       justify-content: flex-end;
-  
+
       > * {
         margin-right: 15px;
-  
+
         &:last-child {
           margin-right: 0;
         }
       }
     }
   }
-
-
 }
 
 .input-modal-overlay {

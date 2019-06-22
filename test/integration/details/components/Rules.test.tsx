@@ -38,7 +38,7 @@ describe('Rules Component', () => {
   })
 
   test('calls add rule handler', () => {
-    wrapper.find('.add-button').simulate('click')
+    wrapper.find('button').at(0).simulate('click')
 
     expect(addRuleMock).toHaveBeenCalledWith(['feature'])
   })
