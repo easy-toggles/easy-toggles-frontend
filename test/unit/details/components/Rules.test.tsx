@@ -12,7 +12,13 @@ describe('Rules Component', () => {
       }
     ]
 
-    wrapper = shallow(<Rules rules={data} path={['feature']} />)
+    const props = {
+      rules: data,
+      path: ['feature'],
+      addRule: jest.fn()
+    }
+    
+    wrapper = shallow(<Rules {...props} />)
   })
 
   test('renders a list of rules', () => {

@@ -31,7 +31,8 @@ const TurnsOff = ({ features }: Props) => {
   const props = {
     buttons: {
       add: {
-        label: 'Add feature to turn off'
+        label: 'Add feature to turn off',
+        onClick: () => {}
       }
     }
   }

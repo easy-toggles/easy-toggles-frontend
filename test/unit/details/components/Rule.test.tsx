@@ -17,7 +17,8 @@ describe('Rule Component', () => {
       deleteRule: deleteRuleMock,
       deleteCriteria: deleteCriteriaMock,
       addCriteria: addCriteriaMock,
-      updateCriteriaValues: updateCriteriaValuesMock
+      updateCriteriaValues: updateCriteriaValuesMock,
+      renameCriteria: jest.fn()
     }
     
     wrapper = shallow(<Rule {...props} />)

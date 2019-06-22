@@ -31,7 +31,8 @@ const DependsOn = ({ features }: Props) => {
   const props = {
     buttons: {
       add: {
-        label: 'Add dependency'
+        label: 'Add dependency',
+        onClick: () => {}
       }
     }
   }

@@ -28,7 +28,7 @@ describe('Rules Component', () => {
       path: ['feature'],
       addRule: addRuleMock
     }
-    
+
     store = mockStore(state)
     wrapper = mount(
       <Provider store={store}>
