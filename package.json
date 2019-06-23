@@ -40,10 +40,12 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^2.4.1",
     "jest": "^24.8.0",
     "jest-transform-stub": "^2.0.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "lint-staged": "^8.2.1",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-url": "^8.0.0",
@@ -81,5 +83,16 @@
     "redux-saga": "^1.0.3",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.14"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*": [
+      "npm run format",
+      "git add"
+    ]
   }
 }
