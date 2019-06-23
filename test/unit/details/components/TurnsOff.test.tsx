@@ -5,7 +5,7 @@ import TurnsOff from '../../../../src/details/components/TurnsOff'
 describe('TurnsOff Component', () => {
   let wrapper
   beforeEach(() => {
-    const data = [ 'someFeature', 'otherFeature' ]
+    const data = ['someFeature', 'otherFeature']
 
     wrapper = shallow(<TurnsOff features={data} />)
   })

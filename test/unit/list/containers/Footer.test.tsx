@@ -11,15 +11,13 @@ import { State } from '../../../../src/store'
 const mockStore = configureStore([asyncMiddleware])
 
 describe('Footer Container', () => {
-  const state: State = { 
+  const state: State = {
     details: {
       name: 'Pikachu',
       config: {}
     },
     list: {
-      applications: [
-        { name: 'Pikachu', id: 1 }
-      ]
+      applications: [{ name: 'Pikachu', id: 1 }]
     }
   }
 
@@ -37,7 +35,7 @@ describe('Footer Container', () => {
         id: 1
       }
     }
-  
+
     wrapper.props().changeApplication(1)
 
     expect(store.getActions()[0]).toEqual(expectedAction)
@@ -50,7 +48,7 @@ describe('Footer Container', () => {
         id: 1
       }
     }
-  
+
     wrapper.props().publish(1)
 
     expect(store.getActions()[0]).toEqual(expectedAction)
@@ -66,7 +64,7 @@ describe('Footer Container', () => {
         }
       }
     }
-  
+
     wrapper.props().addFeature()
 
     expect(store.getActions()[0]).toEqual(expectedAction)

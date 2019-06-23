@@ -17,7 +17,7 @@ describe('Rules Component', () => {
       path: ['feature'],
       addRule: jest.fn()
     }
-    
+
     wrapper = shallow(<Rules {...props} />)
   })
 

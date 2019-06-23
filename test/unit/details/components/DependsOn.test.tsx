@@ -5,7 +5,7 @@ import DependsOn from '../../../../src/details/components/DependsOn'
 describe('DependsOn Component', () => {
   let wrapper
   beforeEach(() => {
-    const data = [ 'someFeature', 'otherFeature' ]
+    const data = ['someFeature', 'otherFeature']
 
     wrapper = shallow(<DependsOn features={data} />)
   })

@@ -2,14 +2,13 @@ import React from 'react'
 
 import './inputTag.less'
 
-
-interface State { 
-  tags: string[],
+interface State {
+  tags: string[]
   value: string
 }
 
-interface Props { 
-  tags: string[],
+interface Props {
+  tags: string[]
   onChange: Function
 }
 
@@ -87,7 +86,9 @@ class InputTag extends React.Component<Props, State> {
             {tags.map((tag, i) => (
               <li key={tag + i} className="tag">
                 <span>{tag}</span>
-                <i className="material-icons" onClick={e => this.removeTag(tag)}>clear</i>
+                <i className="material-icons" onClick={(e) => this.removeTag(tag)}>
+                  clear
+                </i>
               </li>
             ))}
           </ul>

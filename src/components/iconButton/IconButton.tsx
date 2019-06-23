@@ -7,7 +7,7 @@ const IconButton = ({ onClick, type }: Props) => (
 )
 
 interface Props {
-  onClick?: Function,
+  onClick?: Function
   type: string
 }
 

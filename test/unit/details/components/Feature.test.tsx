@@ -53,17 +53,23 @@ describe('Feature Component', () => {
   test('calls toggle handler', () => {
     wrapper.find(Switch).simulate('change', { target: { checked: true } })
 
-    expect(onToggleMock).toHaveBeenCalledWith('someFeature', {...feature, enabled: true })
+    expect(onToggleMock).toHaveBeenCalledWith('someFeature', { ...feature, enabled: true })
   })
 
   test('calls delete handler', () => {
-    wrapper.find('IconButton').at(1).simulate('click')
+    wrapper
+      .find('IconButton')
+      .at(1)
+      .simulate('click')
 
     expect(onDeleteMock).toHaveBeenCalledWith('someFeature')
   })
 
   test('calls edit handler', () => {
-    wrapper.find('IconButton').at(0).simulate('click')
+    wrapper
+      .find('IconButton')
+      .at(0)
+      .simulate('click')
 
     expect(onEditMock).toHaveBeenCalledWith('someFeature')
   })

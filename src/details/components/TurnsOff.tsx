@@ -12,7 +12,7 @@ const listFeaturesToTurnOff = (features: string[]) => {
       <tr key={feature}>
         <th>{feature}</th>
         <td>
-          <IconButton  type={IconButtonTypes.Delete} />
+          <IconButton type={IconButtonTypes.Delete} />
         </td>
       </tr>
     )
@@ -21,10 +21,8 @@ const listFeaturesToTurnOff = (features: string[]) => {
 
 const buildTable = (features: string[]) => (
   <table>
-  <tbody>
-    {listFeaturesToTurnOff(features)}
-  </tbody>
-</table>
+    <tbody>{listFeaturesToTurnOff(features)}</tbody>
+  </table>
 )
 
 const TurnsOff = ({ features }: Props) => {
@@ -38,11 +36,7 @@ const TurnsOff = ({ features }: Props) => {
     }
   }
 
-  return (
-    <ActionList {...props}>
-      { features.length > 0 ? buildTable(features) : null }
-    </ActionList>
-  )
+  return <ActionList {...props}>{features.length > 0 ? buildTable(features) : null}</ActionList>
 }
 
 export default TurnsOff

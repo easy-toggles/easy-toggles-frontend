@@ -12,18 +12,9 @@ const listFeatures = (config: ConfigData) => {
   ))
 }
 
-const renderFeatures = (config) => (
-  <ul className="features-list">
-    {listFeatures(config)}
-  </ul>
-)
+const renderFeatures = (config) => <ul className="features-list">{listFeatures(config)}</ul>
 
-const Details = ({ config }: Props) => (
-
-  <section>
-    { isEmpty(config) ? <Empty /> : renderFeatures(config) }
-  </section>
-)
+const Details = ({ config }: Props) => <section>{isEmpty(config) ? <Empty /> : renderFeatures(config)}</section>
 
 interface Props {
   config: ConfigData

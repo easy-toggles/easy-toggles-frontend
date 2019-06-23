@@ -6,27 +6,22 @@ const buildParameters = (options) => {
   const { payload, method } = options
 
   if (payload) {
-    return contains(method, ['put', 'post', 'patch'])
-      ? { data: payload }
-      : { params: payload }
+    return contains(method, ['put', 'post', 'patch']) ? { data: payload } : { params: payload }
   }
 
   return {}
 }
 
-const asyncTask = store => done => options => {
+const asyncTask = (store) => (done) => (options) => {
   const { method, url, payload } = options
-  
+
   const config = {
     method,
-    url, 
+    url,
     ...buildParameters(options)
   }
 
-  return axios.request(config).then(
-    response => done(null, response),
-    error => done(error, null),
-  );
-};
+  return axios.request(config).then((response) => done(null, response), (error) => done(error, null))
+}
 
 export default createAsyncMiddleware(asyncTask)

@@ -57,5 +57,4 @@ describe('InputModal Container', () => {
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
-
 })

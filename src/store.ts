@@ -38,4 +38,3 @@ const configureStore = (preloadedState: State = buildInitialState()) => {
 type State = ReturnType<typeof reducer>
 
 export { configureStore, State }
-

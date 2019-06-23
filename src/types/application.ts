@@ -1,10 +1,10 @@
 export interface Application {
-  name: string,
+  name: string
   id: number
 }
 
 export interface ApplicationDetails {
-  name: string,
+  name: string
   config: Config
 }
 
@@ -13,9 +13,9 @@ export interface Config {
 }
 
 export interface Feature {
-  enabled: boolean,
-  rules: Rule[],
-  turnsOff: string[],
+  enabled: boolean
+  rules: Rule[]
+  turnsOff: string[]
   dependsOn: string[]
 }
 

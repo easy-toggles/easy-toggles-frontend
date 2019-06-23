@@ -26,7 +26,9 @@ const InputModal = ({ label, value, open, onClose, onConfirm }: Props) => {
           <button className="outline cancel-button" onClick={(e) => onClose()}>
             Cancel
           </button>
-          <button className="confirm-button" onClick={(e) => onConfirm(inputRef.current.value)}>OK</button>
+          <button className="confirm-button" onClick={(e) => onConfirm(inputRef.current.value)}>
+            OK
+          </button>
         </div>
       </div>
     </ReactModal>
@@ -34,9 +36,9 @@ const InputModal = ({ label, value, open, onClose, onConfirm }: Props) => {
 }
 
 export interface Props {
-  label: string, 
-  value: string, 
-  open: boolean,
+  label: string
+  value: string
+  open: boolean
   onClose: () => void
   onConfirm: (value: string) => void
 }

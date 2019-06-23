@@ -12,9 +12,8 @@ interface State {
 }
 
 export default class EditableText extends React.Component<Props, State> {
-
-  private ENTER_KEY_CODE:number = 13
-  private input:RefObject<HTMLInputElement> = React.createRef()
+  private ENTER_KEY_CODE: number = 13
+  private input: RefObject<HTMLInputElement> = React.createRef()
 
   constructor(props) {
     super(props)
@@ -62,9 +61,9 @@ export default class EditableText extends React.Component<Props, State> {
             type="text"
             ref={this.input}
             value={this.state.text}
-            onChange={e => this.handleChange()}
-            onBlur={e => this.handleFocus()}
-            onKeyUp={e => this.handleKeyUp(e)}
+            onChange={(e) => this.handleChange()}
+            onBlur={(e) => this.handleFocus()}
+            onKeyUp={(e) => this.handleKeyUp(e)}
             autoFocus
           />
         </div>
@@ -73,9 +72,7 @@ export default class EditableText extends React.Component<Props, State> {
 
     return (
       <div>
-        <label onClick={(e) => this.handleFocus()}>
-          {this.state.text}
-        </label>
+        <label onClick={(e) => this.handleFocus()}>{this.state.text}</label>
       </div>
     )
   }

@@ -7,7 +7,7 @@ import asyncMiddleware from '../../../../src/asyncMiddleware'
 const mockStore = configureStore([asyncMiddleware])
 
 describe('Details Container', () => {
-  const state = { 
+  const state = {
     details: {
       config: {}
     }

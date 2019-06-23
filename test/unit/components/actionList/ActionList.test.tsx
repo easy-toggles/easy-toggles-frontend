@@ -19,7 +19,6 @@ describe('ActionList Component', () => {
           label: 'Label',
           onClick: onButtonClicked
         }
-
       },
       children: <p>children</p>
     }
@@ -28,11 +27,20 @@ describe('ActionList Component', () => {
   })
 
   test('renders button label', () => {
-    expect(wrapper.find('button').at(0).find('span').text()).toEqual('Label')
+    expect(
+      wrapper
+        .find('button')
+        .at(0)
+        .find('span')
+        .text()
+    ).toEqual('Label')
   })
 
   test('calls button handler', () => {
-    wrapper.find('button').at(0).simulate('click')
+    wrapper
+      .find('button')
+      .at(0)
+      .simulate('click')
 
     expect(onButtonClicked).toHaveBeenCalled()
   })

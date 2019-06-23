@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import Feature from '../../../../src/details/containers/Feature'
 import { types as detailsTypes } from '../../../../src/details/detailsActions'
 import { types as modalTypes } from '../../../../src/modal/modalActions'
-import { InputModalActions } from '../../../../src/types/modal';
+import { InputModalActions } from '../../../../src/types/modal'
 
 const mockStore = configureStore()
 

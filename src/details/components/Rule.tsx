@@ -13,13 +13,16 @@ class Rule extends React.Component<Props, {}> {
     return (
       <tr key={name}>
         <th>
-          <EditableText text={name} onFocusOut={newValue => this.props.renameCriteria(path, newValue)} />
+          <EditableText text={name} onFocusOut={(newValue) => this.props.renameCriteria(path, newValue)} />
         </th>
         <td className="criteria-values">
-          <InputTag tags={values} onChange={tags => this.props.updateCriteriaValues(path, tags)} />
+          <InputTag tags={values} onChange={(tags) => this.props.updateCriteriaValues(path, tags)} />
         </td>
         <td>
-          <IconButton  type={IconButtonTypes.Delete} onClick={(e) => this.props.deleteCriteria(append(name, this.props.path))} />
+          <IconButton
+            type={IconButtonTypes.Delete}
+            onClick={(e) => this.props.deleteCriteria(append(name, this.props.path))}
+          />
         </td>
       </tr>
     )
@@ -57,12 +60,11 @@ class Rule extends React.Component<Props, {}> {
 interface Props {
   rule: RuleData
   path: Array<string | number>
-  addCriteria: Function,
-  renameCriteria: (path: Array<string | number>, newName:string) => void,
-  updateCriteriaValues: Function,
+  addCriteria: Function
+  renameCriteria: (path: Array<string | number>, newName: string) => void
+  updateCriteriaValues: Function
   deleteCriteria: Function
   deleteRule: Function
-  
 }
 
 export default Rule

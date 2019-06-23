@@ -35,7 +35,7 @@ describe('InputModal Component', () => {
       onClose: onCloseMock,
       onConfirm: onConfirmMock
     }
-    
+
     store = mockStore(state)
     wrapper = mount(
       <Provider store={store}>

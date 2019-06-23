@@ -9,7 +9,10 @@ function* onConfirmInputModal({ payload }) {
   if (InputModalActions.AddFeature === payload.action) {
     nextAction = yield call(detailsActions.creators.addFeature, { name: payload.newValue })
   } else if (InputModalActions.EditFeature === payload.action) {
-    nextAction = yield call(detailsActions.creators.renameFeature, { path: [payload.oldValue], newValue: payload.newValue })
+    nextAction = yield call(detailsActions.creators.renameFeature, {
+      path: [payload.oldValue],
+      newValue: payload.newValue
+    })
   }
 
   if (nextAction) {

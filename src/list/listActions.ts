@@ -4,7 +4,7 @@ import { Application } from '../types/application'
 const { types, creators } = createActions('details', {
   toggleFeature: null,
   changeApplication: null,
-  loadApplications: { url: 'api/applications', method: 'get'}
+  loadApplications: { url: 'api/applications', method: 'get' }
 })
 
 export { types, creators }

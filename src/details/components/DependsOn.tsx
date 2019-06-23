@@ -21,10 +21,8 @@ const listDependencies = (features: string[]) => {
 
 const buildTable = (features: string[]) => (
   <table>
-  <tbody>
-    {listDependencies(features)}
-  </tbody>
-</table>
+    <tbody>{listDependencies(features)}</tbody>
+  </table>
 )
 
 const DependsOn = ({ features }: Props) => {
@@ -38,11 +36,7 @@ const DependsOn = ({ features }: Props) => {
     }
   }
 
-  return (
-    <ActionList {...props}>
-      { features.length > 0 ? buildTable(features) : null }
-    </ActionList>
-  )
+  return <ActionList {...props}>{features.length > 0 ? buildTable(features) : null}</ActionList>
 }
 
 export default DependsOn

@@ -30,7 +30,7 @@ interface Props {
   buttons: {
     [key: string]: Button
   }
-  children?: React.ReactNode,
+  children?: React.ReactNode
   className?: string
 }
 

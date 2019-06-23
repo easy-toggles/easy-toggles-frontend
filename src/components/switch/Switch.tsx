@@ -19,7 +19,7 @@ const Switch = ({ checked, onChange }: Props) => {
 }
 
 interface Props {
-  checked: boolean,
+  checked: boolean
   onChange: any
 }
 

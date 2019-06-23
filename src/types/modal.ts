@@ -1,12 +1,12 @@
 export interface ModalState {
-  open: boolean,
-  action?: InputModalActions,
+  open: boolean
+  action?: InputModalActions
   content: InputModalContent
 }
 
 export interface InputModalContent {
   label?: string
-  value?: string 
+  value?: string
 }
 
 export enum InputModalActions {

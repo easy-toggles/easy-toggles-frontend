@@ -20,7 +20,7 @@ describe('Rule Component', () => {
       updateCriteriaValues: updateCriteriaValuesMock,
       renameCriteria: jest.fn()
     }
-    
+
     wrapper = shallow(<Rule {...props} />)
   })
 
