@@ -32,9 +32,6 @@ class Footer extends React.Component<Props, State> {
         <div>
           <div className="application">
             <div className="form-select">
-              <button className="add-application-button">
-                <i className="material-icons">add</i>
-              </button>
               <label htmlFor="application-select">Application</label>
               <select id="application-select" onChange={(e) => this.onChangeApplication(e)}>
                 <option></option>
