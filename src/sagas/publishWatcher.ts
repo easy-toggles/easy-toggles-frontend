@@ -2,7 +2,8 @@ import { call, put, takeEvery, select } from 'redux-saga/effects'
 import * as detailsActions from '../details/detailsActions'
 
 function* publish({ payload }) {
-  const publishAction = yield call(detailsActions.creators.publish, null, { id: payload.id })
+  const { details } = yield select()
+  const publishAction = yield call(detailsActions.creators.publish, {...details}, { id: payload.id})
   yield put(publishAction)
 }
 

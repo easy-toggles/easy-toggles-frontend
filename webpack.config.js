@@ -59,6 +59,7 @@ module.exports = {
   devServer: {
     stats: 'normal',
     disableHostCheck: true,
+    historyApiFallback: true,
     proxy: [
       { path: '/api', target: stubHost }
     ]

@@ -9,7 +9,7 @@ input {
 }
 
 header {
-  padding: 60px 20px 100px;
+  padding: 20px 20px 100px;
   background: @primary-color;
 
   h1 {
@@ -21,16 +21,37 @@ header {
 }
 
 section {
-  max-width: 1000px;
-  margin: auto;
-  margin-top: -81px;
-  margin-bottom: 200px;
-  background: #fff;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-}
+  margin-top: -80px;
 
-.features-list {
-  margin-bottom: 50px;
+  > ul {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 120px;
+    background: #fff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  > .action-bar {
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    box-shadow: -3px -3px 10px rgba(0, 0, 0, 0.1);
+
+    > div {
+      display: flex;
+      width: 100%;
+      max-width: 1000px;
+      justify-content: flex-end;
+      margin: 0 auto;
+
+      > * {
+        margin-left: 10px;
+      }
+    }
+  }
 }
 
 button {

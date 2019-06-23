@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import InputModal from '../../../../src/modal/components/InputModal'
 
-describe('Footer Component', () => {
+describe('InputModal Component', () => {
   let wrapper
   const onCloseMock = jest.fn()
   const onConfirmMock = jest.fn()

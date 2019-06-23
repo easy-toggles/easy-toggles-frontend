@@ -5,7 +5,7 @@ import Switch from '../../components/switch/Switch'
 import Rules from '../containers/Rules'
 import DependsOn from './DependsOn'
 import TurnsOff from './TurnsOff'
-import { Feature as FeatureData } from '../../types/application'
+import { Feature as FeatureData } from '../../types/project'
 import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
 import { DispatchProps } from '../containers/Feature'
 

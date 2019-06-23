@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import Feature from '../components/Feature'
 import { creators as detailsCreators } from '../detailsActions'
 import { creators as modalCreators } from '../../modal/modalActions'
-import { Feature as FeatureData } from '../../types/application'
+import { Feature as FeatureData } from '../../types/project'
 import { InputModalActions } from '../../types/modal'
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({

@@ -1,9 +1,9 @@
-export interface Application {
+export interface Project {
   name: string
   id: number
 }
 
-export interface ApplicationDetails {
+export interface ProjectDetails {
   name: string
   config: Config
 }

@@ -1,5 +1,5 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects'
-import * as listActions from '../list/listActions'
+import * as projectsActions from '../projects/projectsActions'
 import * as detailsActions from '../details/detailsActions'
 
 function* changeApplication({ payload }) {
@@ -8,7 +8,7 @@ function* changeApplication({ payload }) {
 }
 
 function* changeApplicationWatcher() {
-  yield takeEvery(listActions.types.CHANGE_APPLICATION, changeApplication)
+  yield takeEvery(projectsActions.types.CHANGE_APPLICATION, changeApplication)
 }
 
 export default changeApplicationWatcher

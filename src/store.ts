@@ -1,7 +1,7 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { detailsReducer, initialState as detailsInitialState } from './details/detailsReducer'
-import { listReducer, initialState as listInitialState } from './list/listReducer'
+import { projectsReducer, initialState as projectsInitialState } from './projects/projectsReducer'
 import { modalReducer, initialState as modalInitialState } from './modal/modalReducer'
 import thunkMiddleware from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
@@ -10,13 +10,13 @@ import sagas from './configureSagas'
 
 const reducer = combineReducers({
   details: detailsReducer,
-  list: listReducer,
+  projects: projectsReducer,
   modal: modalReducer
 })
 
 const buildInitialState = (): State => ({
   details: detailsInitialState,
-  list: listInitialState,
+  projects: projectsInitialState,
   modal: modalInitialState
 })
 

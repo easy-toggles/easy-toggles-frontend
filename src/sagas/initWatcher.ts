@@ -1,8 +1,8 @@
 import { call, put } from 'redux-saga/effects'
-import * as listActions from '../list/listActions'
+import * as actions from '../projects/projectsActions'
 
 function* initWatcher() {
-  const loadApplicationsAction = yield call(listActions.creators.loadApplications)
+  const loadApplicationsAction = yield call(actions.creators.loadApplications)
   yield put(loadApplicationsAction)
 }
 

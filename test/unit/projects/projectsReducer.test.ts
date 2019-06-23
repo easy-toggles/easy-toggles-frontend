@@ -1,8 +1,8 @@
-import * as actions from '../../../src/list/listActions'
-import { listReducer } from '../../../src/list/listReducer'
+import * as actions from '../../../src/projects/projectsActions'
+import { projectsReducer } from '../../../src/projects/projectsReducer'
 import response from '../../stubs/applications.json'
 
-describe('List Reducer', () => {
+describe('Projects Reducer', () => {
   const scenarios = [
     {
       name: 'loads applications',
@@ -13,17 +13,17 @@ describe('List Reducer', () => {
         }
       },
       prevState: {
-        applications: []
+        data: []
       },
       expectedState: {
-        applications: response
+        data: response
       }
     }
   ]
 
   scenarios.forEach((scenario) => {
     it(scenario.name, () => {
-      expect(listReducer(scenario.prevState, scenario.action)).toEqual(scenario.expectedState)
+      expect(projectsReducer(scenario.prevState, scenario.action)).toEqual(scenario.expectedState)
     })
   })
 })

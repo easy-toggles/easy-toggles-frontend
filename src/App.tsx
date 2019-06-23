@@ -1,20 +1,23 @@
 import * as React from 'react'
-import Details from './details/containers/Details'
-import Footer from './list/containers/Footer'
+import { HashRouter, Route } from 'react-router-dom'
 import InputModal from './modal/containers/InputModal'
+import Projects from './projects/containers/Projects'
+import Details from './details/containers/Details'
 
 import './app.less'
 class App extends React.Component<{}, {}> {
   public render() {
     return (
-      <div>
+      <HashRouter>
         <header>
           <h1>Easy Toggles</h1>
         </header>
-        <Details />
-        <Footer />
+
+        <Route exact path="/" component={Projects} />
+        <Route exact path="/projects/:id" component={Details} />
+
         <InputModal />
-      </div>
+      </HashRouter>
     )
   }
 }

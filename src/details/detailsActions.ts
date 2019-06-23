@@ -1,5 +1,5 @@
 import { createActions } from 'redux-arc'
-import { Feature, Config } from '../types/application'
+import { Feature, Config } from '../types/project'
 
 const { types, creators } = createActions('details', {
   toggleFeature: null,
