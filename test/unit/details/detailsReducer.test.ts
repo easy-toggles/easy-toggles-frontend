@@ -43,7 +43,7 @@ describe('Details Reducer', () => {
             enabled: false
           }
         },
-        type: actions.types.CHANGE_FEATURE
+        type: actions.types.TOGGLE_FEATURE
       },
       prevState: {
         name: 'app',
@@ -60,6 +60,28 @@ describe('Details Reducer', () => {
             enabled: false
           }
         }
+      }
+    },
+    {
+      name: 'deletes feature',
+      action: {
+        payload: {
+          path: ['someFeature']
+        },
+        type: actions.types.DELETE_FEATURE
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ criteria: [] }, { criteria: [] }]
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {}
       }
     },
     {
@@ -84,10 +106,7 @@ describe('Details Reducer', () => {
         config: {
           someFeature: {
             enabled: true,
-            rules: [
-              { 'some-criteria': [] },
-              { criteria: [] }
-            ]
+            rules: [{ 'some-criteria': [] }, { criteria: [] }]
           }
         }
       }

@@ -4,19 +4,29 @@ import Feature from '../../../../src/details/components/Feature'
 import Rules from '../../../../src/details/containers/Rules'
 import DependsOn from '../../../../src/details/components/DependsOn'
 import TurnsOff from '../../../../src/details/components/TurnsOff'
+import Switch from '../../../../src/components/switch/Switch'
 
 describe('Feature Component', () => {
+  const onToggleMock = jest.fn()
+  const onDeleteMock = jest.fn()
+  const feature = {
+    enabled: true,
+    rules: [],
+    turnsOff: ['someFeature'],
+    dependsOn: ['otherFeature']
+  }
+
   let wrapper
 
   beforeEach(() => {
-    const onChangeFeatureToggleMock = jest.fn()
-    const data = {
-      enabled: true,
-      rules: [],
-      turnsOff: ['someFeature'],
-      dependsOn: ['otherFeature']
+    const props = {
+      feature,
+      name: 'someFeature',
+      onToggle: onToggleMock,
+      onDelete: onDeleteMock
     }
-    wrapper = shallow(<Feature feature={data} name="someFeature" onChangeFeatureToggle={onChangeFeatureToggleMock} />)
+
+    wrapper = shallow(<Feature {...props} />)
   })
 
   test('renders feature name', () => {
@@ -36,5 +46,17 @@ describe('Feature Component', () => {
   test('renders TurnsOff component', () => {
     expect(wrapper.find(TurnsOff).exists()).toBe(true)
     expect(wrapper.find(TurnsOff).prop('features')).toEqual(['someFeature'])
+  })
+
+  test('calls on toggle handler', () => {
+    wrapper.find(Switch).simulate('change', { target: { checked: true } })
+
+    expect(onToggleMock).toHaveBeenCalledWith('someFeature', {...feature, enabled: true })
+  })
+
+  test('calls on delete handler', () => {
+    wrapper.find('IconButton').at(1).simulate('click')
+
+    expect(onDeleteMock).toHaveBeenCalledWith('someFeature')
   })
 })
