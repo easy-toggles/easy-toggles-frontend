@@ -3,20 +3,20 @@
 
 body,
 label,
-select, 
+select,
 input {
   font-family: Roboto;
 }
 
 header {
-  background: @primary-color;
   padding: 60px 20px 100px;
+  background: @primary-color;
 
   h1 {
-    font-family: Cookie;
-    font-weight: normal;
-    font-size: 96px;
     color: #fff;
+    font-family: Cookie;
+    font-size: 96px;
+    font-weight: normal;
   }
 }
 
@@ -34,26 +34,26 @@ section {
 }
 
 button {
-  background: @secondary-color;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 14px;
-  text-transform: uppercase;
   display: flex;
   align-items: center;
+  padding: 10px 20px;
+  border: none;
+  background: @secondary-color;
+  border-radius: 5px;
+  color: white;
   cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
 
   i {
     margin-right: 10px;
   }
 
   &.outline {
+    border: 1px solid @primary-color;
     background: none;
     color: @primary-color;
     text-transform: none;
-    border: 1px solid @primary-color;
   }
 }
 
@@ -98,28 +98,28 @@ table {
 }
 
 select {
-  color: #444444;
-  font-size: 18px;
   padding: 5px 40px 5px 10px;
   border: 0;
+  border: 1px dotted #666;
   appearance: none;
   background: none;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' fill='%666666'><polygon points='0,0 80,0 40,40'/></svg>")
     no-repeat;
-  background-size: 12px;
   background-position: calc(100% - 15px) 62%;
   background-repeat: no-repeat;
-  border: 1px dotted #666;
+  background-size: 12px;
+  color: #444444;
+  font-size: 18px;
 }
 
-input[type="text"] {
+input[type='text'] {
   padding: 6px 10px;
+  border: 1px dotted #666;
+  background: none;
   border-radius: 10em;
   color: #666;
   font-size: 16px;
   outline: 0;
-  border: 1px dotted #666;
-  background: none;
 
   &::placeholder {
     color: #c9c9c9;
@@ -127,10 +127,10 @@ input[type="text"] {
 }
 
 button.icon-button {
+  padding: 0;
   background: none;
   color: @secondary-color;
   text-transform: none;
-  padding: 0;
 
   i {
     margin: 0;

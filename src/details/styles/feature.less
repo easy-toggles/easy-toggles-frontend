@@ -7,8 +7,8 @@
   }
 
   &__tab {
-    display: inline-block;
     position: relative;
+    display: inline-block;
     padding: 20px 20px 16px;
     color: #bbb;
     cursor: pointer;
@@ -20,18 +20,18 @@
     }
 
     &:focus {
-      box-shadow: 0 0 5px hsl(208, 99%, 50%);
       border-color: hsl(208, 99%, 50%);
+      box-shadow: 0 0 5px hsl(208, 99%, 50%);
       outline: none;
 
       &:after {
-        content: '';
         position: absolute;
-        height: 5px;
-        left: -4px;
         right: -4px;
         bottom: -5px;
+        left: -4px;
+        height: 5px;
         background: #fff;
+        content: '';
       }
     }
   }
@@ -41,30 +41,30 @@
 
     &--selected {
       display: block;
-      background: #f9f9f9;
       padding: 20px;
-      color: #707070;
+      background: #f9f9f9;
       box-shadow: inset 2px 3px 10px rgba(0, 0, 0, 0.1);
+      color: #707070;
     }
   }
 }
 
 .feature-item {
-  border-bottom: 1px dotted #d0d0d0;
-  line-height: 80px;
   display: flex;
   align-items: center;
   justify-content: stretch;
+  border-bottom: 1px dotted #d0d0d0;
+  line-height: 80px;
 
   > * {
     margin-right: 20px;
   }
 
   h2 {
-    font-weight: bold;
     flex-grow: 1;
-    cursor: pointer;
     padding-left: 20px;
+    cursor: pointer;
     font-size: 20px;
+    font-weight: bold;
   }
 }

@@ -9,16 +9,14 @@ footer {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
 
   > div {
-    max-width: 1000px;
-    margin: auto;
     display: flex;
-    padding: 20px;
-    align-items: center;
+    max-width: 1000px;
     flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
 
-    .Medium({
-      flex-direction: row;
-    });
+    .Medium({flex-direction: row;});
 
     * {
       margin-right: 20px;
@@ -30,51 +28,44 @@ footer {
   }
 
   .form-select {
-    color: @medium-grey;
-    border-radius: 10em;
     display: flex;
     align-items: center;
     border: 1px dotted @dark-grey;
+    border-radius: 10em;
+    color: @medium-grey;
 
-    .Medium({
-      max-width: 350px;
-    });
+    .Medium({max-width: 350px;});
 
     button {
-      background: @lighter-grey;
-      color: @dark-grey;
-      border-radius: 10em;
-      border-right: 1px dotted @dark-grey;
       padding: 5px 15px;
-      border-top-right-radius: 0;
+      border-right: 1px dotted @dark-grey;
+      background: @lighter-grey;
       border-bottom-right-radius: 0;
+      border-radius: 10em;
+      border-top-right-radius: 0;
+      color: @dark-grey;
     }
 
     select {
-      border-radius: 0 15px 15px 0;
+      flex-grow: 1;
       border: none;
       border-left: 1px dotted @dark-grey;
-      flex-grow: 1;
+      border-radius: 0 15px 15px 0;
     }
   }
 
   .action-bar {
     display: flex;
-    justify-content: space-between;
     align-content: stretch;
     align-items: stretch;
+    justify-content: space-between;
   }
 
   .application {
-    margin-bottom: 20px;
     width: 100%;
+    margin-bottom: 20px;
     margin-left: 20px;
 
-    .Medium({
-      flex-grow: 1;
-      margin-bottom: 0;
-      width: auto;
-    });
-   
+    .Medium({flex-grow: 1; margin-bottom: 0; width: auto;});
   }
 }
