@@ -5,6 +5,7 @@ const { types, creators } = createActions('details', {
   toggleFeature: null,
   addFeature: null,
   deleteFeature: null,
+  renameFeature: null,
   addRule: null,
   deleteRule: null,
   addCriteria: null,
@@ -37,6 +38,14 @@ export interface ToggleFeatureAction {
   payload: {
     path: Array<string | number>
     data: Feature
+  }
+}
+
+export interface RenameFeatureAction {
+  type: typeof types.RENAME_FEATURE
+  payload: {
+    path: Array<string | number>
+    newValue: string
   }
 }
 

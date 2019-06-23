@@ -10,6 +10,10 @@ export const initialState: ApplicationDetails = {
   name: null
 }
 
+const renameKeys = curry((keysMap, obj) =>
+  reduce((acc, key) => assoc(keysMap[key] || key, obj[key], acc), {}, keys(obj))
+)
+
 const toggleFeature = (state: State, action: actions.ToggleFeatureAction) => {
   const [feature] = action.payload.path
   return {
@@ -43,6 +47,14 @@ const addRule = (state: State, { payload }: actions.AddRuleAction) => {
   })
 }
 
+const renameFeature = (state: State, { payload }: actions.RenameFeatureAction) => {
+  const [feature] = payload.path
+
+  return produce(state, (draft) => {
+    draft.config = renameKeys({ [feature]: payload.newValue }, draft.config)
+  })
+}
+
 const addCriteria = (state: State, { payload }: actions.AddCriteriaAction) => {
   const [feature, rule] = payload.path
 
@@ -61,10 +73,6 @@ const updateCriteriaValues = (state: State, { payload }: actions.UpdateCriteriaV
 
 const renameCriteria = (state: State, { payload }: actions.RenameCriteriaAction) => {
   const [feature, rule, criteria] = payload.path
-
-  const renameKeys = curry((keysMap, obj) =>
-    reduce((acc, key) => assoc(keysMap[key] || key, obj[key], acc), {}, keys(obj))
-  )
 
   return produce(state, (draft) => {
     const currentRule = draft.config[feature]['rules'][rule]
@@ -106,6 +114,7 @@ const HANDLERS = {
   [actions.types.TOGGLE_FEATURE]: toggleFeature,
   [actions.types.DELETE_FEATURE]: deleteFeature,
   [actions.types.ADD_FEATURE]: addFeature,
+  [actions.types.RENAME_FEATURE]: renameFeature,
   [actions.types.ADD_RULE]: addRule,
   [actions.types.DELETE_RULE]: deleteRule,
   [actions.types.ADD_CRITERIA]: addCriteria,

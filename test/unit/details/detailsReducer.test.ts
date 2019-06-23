@@ -63,6 +63,32 @@ describe('Details Reducer', () => {
       }
     },
     {
+      name: 'renames feature',
+      action: {
+        payload: {
+          path: ['someFeature'],
+          newValue: 'pokemon'
+        },
+        type: actions.types.RENAME_FEATURE
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true
+          }
+        }
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          pokemon: {
+            enabled: true
+          }
+        }
+      }
+    },
+    {
       name: 'deletes feature',
       action: {
         payload: {

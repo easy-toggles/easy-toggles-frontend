@@ -9,6 +9,7 @@ import Switch from '../../../../src/components/switch/Switch'
 describe('Feature Component', () => {
   const onToggleMock = jest.fn()
   const onDeleteMock = jest.fn()
+  const onEditMock = jest.fn()
   const feature = {
     enabled: true,
     rules: [],
@@ -23,7 +24,8 @@ describe('Feature Component', () => {
       feature,
       name: 'someFeature',
       onToggle: onToggleMock,
-      onDelete: onDeleteMock
+      onDelete: onDeleteMock,
+      onEdit: onEditMock
     }
 
     wrapper = shallow(<Feature {...props} />)
@@ -48,15 +50,21 @@ describe('Feature Component', () => {
     expect(wrapper.find(TurnsOff).prop('features')).toEqual(['someFeature'])
   })
 
-  test('calls on toggle handler', () => {
+  test('calls toggle handler', () => {
     wrapper.find(Switch).simulate('change', { target: { checked: true } })
 
     expect(onToggleMock).toHaveBeenCalledWith('someFeature', {...feature, enabled: true })
   })
 
-  test('calls on delete handler', () => {
+  test('calls delete handler', () => {
     wrapper.find('IconButton').at(1).simulate('click')
 
     expect(onDeleteMock).toHaveBeenCalledWith('someFeature')
+  })
+
+  test('calls edit handler', () => {
+    wrapper.find('IconButton').at(0).simulate('click')
+
+    expect(onEditMock).toHaveBeenCalledWith('someFeature')
   })
 })

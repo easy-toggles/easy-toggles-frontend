@@ -8,7 +8,6 @@ if (document && document.getElementById('#root')) {
 }
 
 const InputModal = ({ label, value, open, onClose, onConfirm }: Props) => {
-
   const inputRef: RefObject<HTMLInputElement> = React.createRef()
 
   const props = {

@@ -39,7 +39,7 @@ class Feature extends React.Component<Props, State> {
         <div className="feature-item">
           <h2 onClick={(e) => this.handleClick()}>{this.props.name}</h2>
           <Switch checked={this.props.feature.enabled} onChange={(e) => this.handleToggle(e)} />
-          <IconButton type={IconButtonTypes.Edit} onClick={() => {}} />
+          <IconButton type={IconButtonTypes.Edit} onClick={() => this.props.onEdit(this.props.name)} />
           <IconButton type={IconButtonTypes.Delete} onClick={() => this.props.onDelete(this.props.name)} />
         </div>
 

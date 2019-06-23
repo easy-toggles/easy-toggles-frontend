@@ -12,8 +12,9 @@ export { types, creators }
 export interface InputModalConfirmAction {
   type: typeof types.CONFIRM
   payload: {
-    label: string,
-    value: string
+    label: string
+    newValue: string
+    oldValue?: string
     action: InputModalActions
   }
 }
@@ -22,8 +23,8 @@ export interface OpenModalAction {
   type: typeof types.OPEN
   payload: {
     content: {
-      label: string,
-      value?: string,
+      label: string
+      value?: string
     }
     action: InputModalActions
   }

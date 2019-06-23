@@ -20,7 +20,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
   onClose: () => dispatch(creators.close()),
-  onConfirm: (action, label) => (value) => dispatch(creators.confirm({ action, label, value }))
+  onConfirm: (action, label, oldValue) => (newValue) => dispatch(creators.confirm({ action, label, newValue, oldValue }))
 })
 
 const mergeProps =  (stateProps: StateProps, dispatchProps: DispatchProps): Props => ({
@@ -28,12 +28,12 @@ const mergeProps =  (stateProps: StateProps, dispatchProps: DispatchProps): Prop
   open: stateProps.open,
   label: stateProps.label,
   value: stateProps.value,
-  onConfirm: dispatchProps.onConfirm(stateProps.action, stateProps.label)
+  onConfirm: dispatchProps.onConfirm(stateProps.action, stateProps.label, stateProps.value)
 })
 
 interface DispatchProps {
   onClose: () => void,
-  onConfirm: (action: string, label: string) => (value: string) => void
+  onConfirm: (action: string, label: string, oldValue: string) => (newValue: string) => void
 }
 
 interface StateProps {

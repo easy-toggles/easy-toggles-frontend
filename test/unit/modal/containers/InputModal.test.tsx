@@ -49,7 +49,7 @@ describe('InputModal Container', () => {
       payload: {
         action: 'addFeature',
         label: 'label',
-        value: 'newValue'
+        newValue: 'newValue'
       }
     }
 

@@ -10,5 +10,6 @@ export interface InputModalContent {
 }
 
 export enum InputModalActions {
-  AddFeature = 'addFeature'
+  AddFeature = 'addFeature',
+  EditFeature = 'editFeature'
 }
