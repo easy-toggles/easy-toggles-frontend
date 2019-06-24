@@ -12,7 +12,7 @@ const mapStateToProps = ({ details: { config } }: State): StateProps => {
 }
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
-  loadProject: (id) => dispatch(projectsCreators.changeApplication({ id })),
+  loadProject: (id) => dispatch(detailsCreators.loadConfig(null, { id })),
   addFeature: () =>
     dispatch(
       modalCreators.open({

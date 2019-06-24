@@ -3,7 +3,7 @@ import * as modalActions from '../modal/modalActions'
 import * as detailsActions from '../details/detailsActions'
 import { InputModalActions } from '../types/modal'
 
-function* onConfirmInputModal({ payload }) {
+function* confirmInputModal({ payload }) {
   let nextAction
 
   if (InputModalActions.AddFeature === payload.action) {
@@ -24,7 +24,7 @@ function* onConfirmInputModal({ payload }) {
 }
 
 function* confirmInputModalWatcher() {
-  yield takeEvery(modalActions.types.CONFIRM, onConfirmInputModal)
+  yield takeEvery(modalActions.types.CONFIRM, confirmInputModal)
 }
 
 export default confirmInputModalWatcher

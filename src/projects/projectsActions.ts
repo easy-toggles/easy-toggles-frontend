@@ -2,7 +2,6 @@ import { createActions } from 'redux-arc'
 import { Project } from '../types/project'
 
 const { types, creators } = createActions('details', {
-  changeApplication: null,
   loadApplications: { url: 'api/applications', method: 'get' }
 })
 

@@ -7,8 +7,8 @@ function* publish({ payload }) {
   yield put(publishAction)
 }
 
-function* changeApplicationWatcher() {
+function* publishWatcher() {
   yield takeEvery(detailsActions.types.START_PUBLISH, publish)
 }
 
-export default changeApplicationWatcher
+export default publishWatcher
