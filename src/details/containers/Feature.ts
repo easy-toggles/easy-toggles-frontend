@@ -1,13 +1,12 @@
 import { connect } from 'react-redux'
 import Feature from '../components/Feature'
-import { creators as detailsCreators } from '../detailsActions'
+import * as detailsActions from '../detailsActions'
 import { creators as modalCreators } from '../../modal/modalActions'
 import { Feature as FeatureData } from '../../types/project'
-import { InputModalActions } from '../../types/modal'
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
-  onToggle: (name, data) => dispatch(detailsCreators.toggleFeature({ path: [name], data })),
-  onDelete: (name) => dispatch(detailsCreators.deleteFeature({ path: [name] })),
+  onToggle: (name, data) => dispatch(detailsActions.creators.toggleFeature({ path: [name], data })),
+  onDelete: (name) => dispatch(detailsActions.creators.deleteFeature({ path: [name] })),
   onEdit: (name) =>
     dispatch(
       modalCreators.open({
@@ -15,7 +14,7 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
           label: 'Edit feature',
           value: name
         },
-        action: InputModalActions.EditFeature
+        action: detailsActions.types.RENAME_FEATURE
       })
     )
 })

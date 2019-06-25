@@ -22,7 +22,7 @@ export { types, creators }
 export interface AddFeatureAction {
   type: typeof types.ADD_FEATURE
   payload: {
-    name: string
+    value: string
   }
 }
 
@@ -44,8 +44,8 @@ export interface ToggleFeatureAction {
 export interface RenameFeatureAction {
   type: typeof types.RENAME_FEATURE
   payload: {
-    path: Array<string | number>
-    newValue: string
+    oldValue: string
+    value: string
   }
 }
 

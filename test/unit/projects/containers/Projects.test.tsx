@@ -4,6 +4,8 @@ import { shallow } from 'enzyme'
 import Projects from '../../../../src/projects/containers/Projects'
 import asyncMiddleware from '../../../../src/asyncMiddleware'
 import { State } from '../../../../src/store'
+import { types as modalTypes } from '../../../../src/modal/modalActions'
+import { types as projectsTypes } from '../../../../src/projects/projectsActions'
 
 const mockStore = configureStore([asyncMiddleware])
 
@@ -28,4 +30,22 @@ describe('Projects Container', () => {
   test('maps state to props', () => {
     expect(wrapper.props().projects).toEqual([{ name: 'Pikachu', id: 1 }])
   })
+
+
+  test('dispatches start add project action', () => {
+    const expectedAction = {
+      type: modalTypes.OPEN,
+      payload: {
+        content: {
+          label: 'Add project'
+        },
+        action: projectsTypes.START_ADD
+      }
+    }
+
+    wrapper.props().addProject()
+
+    expect(store.getActions()[0]).toEqual(expectedAction)
+  })
+
 })

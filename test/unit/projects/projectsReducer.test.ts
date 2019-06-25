@@ -1,6 +1,7 @@
 import * as actions from '../../../src/projects/projectsActions'
 import { projectsReducer } from '../../../src/projects/projectsReducer'
-import response from '../../stubs/applications.json'
+import projectsResponse from '../../stubs/applications.json'
+import projectResponse from '../../stubs/project.json'
 
 describe('Projects Reducer', () => {
   const scenarios = [
@@ -9,14 +10,29 @@ describe('Projects Reducer', () => {
       action: {
         type: actions.types.LOAD_APPLICATIONS.RESPONSE,
         payload: {
-          data: response
+          data: projectsResponse
         }
       },
       prevState: {
         data: []
       },
       expectedState: {
-        data: response
+        data: projectsResponse
+      }
+    },
+    {
+      name: 'adds project',
+      action: {
+        type: actions.types.ADD.RESPONSE,
+        payload: {
+          data: projectResponse
+        }
+      },
+      prevState: {
+        data: []
+      },
+      expectedState: {
+        data: [projectResponse]
       }
     }
   ]

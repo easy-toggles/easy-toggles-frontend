@@ -14,7 +14,7 @@ describe('InputModal Container', () => {
   const state = {
     modal: {
       open: true,
-      action: 'addFeature',
+      action: 'SOME_ACTION',
       content: {
         label: 'label'
       }
@@ -43,18 +43,19 @@ describe('InputModal Container', () => {
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
-  test('dispatches on confirm action', () => {
-    const expectedAction = {
-      type: types.CONFIRM,
+  test('dispatches custom and close actions', () => {
+    const expectedActions = [{
+      type: 'SOME_ACTION',
       payload: {
-        action: 'addFeature',
-        label: 'label',
-        newValue: 'newValue'
+        value: 'newValue'
       }
-    }
+    },
+    {
+      type: types.CLOSE
+    }]
 
     wrapper.props().onConfirm('newValue')
 
-    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()).toEqual(expectedActions)
   })
 })

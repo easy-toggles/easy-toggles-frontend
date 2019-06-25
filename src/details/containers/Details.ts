@@ -2,25 +2,23 @@ import { connect } from 'react-redux'
 import Details from '../components/Details'
 import { State } from '../../store'
 import { Config } from '../../types/project'
-import { creators as projectsCreators } from '../../projects/projectsActions'
-import { creators as detailsCreators } from '../../details/detailsActions'
+import * as detailsActions from '../../details/detailsActions'
 import { creators as modalCreators } from '../../modal/modalActions'
-import { InputModalActions } from '../../types/modal'
 
 const mapStateToProps = ({ details: { config } }: State): StateProps => {
   return { config }
 }
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
-  loadProject: (id) => dispatch(detailsCreators.loadConfig(null, { id })),
+  loadProject: (id) => dispatch(detailsActions.creators.loadConfig(null, { id })),
   addFeature: () =>
     dispatch(
       modalCreators.open({
-        action: InputModalActions.AddFeature,
+        action: detailsActions.types.ADD_FEATURE,
         content: { label: 'Add feature' }
       })
     ),
-  publish: (id: number) => dispatch(detailsCreators.startPublish({ id }))
+  publish: (id: number) => dispatch(detailsActions.creators.startPublish({ id }))
 })
 
 export interface DispatchProps {

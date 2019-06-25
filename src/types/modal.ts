@@ -1,6 +1,6 @@
 export interface ModalState {
   open: boolean
-  action?: InputModalActions
+  action?: string
   content: InputModalContent
 }
 
@@ -9,7 +9,3 @@ export interface InputModalContent {
   value?: string
 }
 
-export enum InputModalActions {
-  AddFeature = 'addFeature',
-  EditFeature = 'editFeature'
-}

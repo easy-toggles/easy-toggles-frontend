@@ -29,7 +29,7 @@ const toggleFeature = (state: State, action: actions.ToggleFeatureAction) => {
 
 const addFeature = (state: State, { payload }: actions.AddFeatureAction) => {
   return produce(state, (draft) => {
-    draft.config[payload.name] = {
+    draft.config[payload.value] = {
       enabled: false,
       rules: [],
       dependsOn: [],
@@ -48,10 +48,8 @@ const addRule = (state: State, { payload }: actions.AddRuleAction) => {
 }
 
 const renameFeature = (state: State, { payload }: actions.RenameFeatureAction) => {
-  const [feature] = payload.path
-
   return produce(state, (draft) => {
-    draft.config = renameKeys({ [feature]: payload.newValue }, draft.config)
+    draft.config = renameKeys({ [payload.oldValue]: payload.value }, draft.config)
   })
 }
 

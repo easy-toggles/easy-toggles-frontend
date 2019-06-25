@@ -20,6 +20,16 @@
   },
   {
     "request": {
+      "url": "^/api/applications$",
+      "method": "POST"
+    },
+    "response": {
+      "status": 200,
+      "file": "./test/stubs/project.json"
+    }
+  },
+  {
+    "request": {
       "url": "^/api/applications/[0-9]*$",
       "method": "GET"
     },
