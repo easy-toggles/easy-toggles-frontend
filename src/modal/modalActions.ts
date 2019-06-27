@@ -1,5 +1,4 @@
 import { createActions } from 'redux-arc'
-import { InputModalActions } from '../types/modal'
 
 const { types, creators } = createActions('modal', {
   open: null,
@@ -15,7 +14,7 @@ export interface InputModalConfirmAction {
     label: string
     newValue: string
     oldValue?: string
-    action: InputModalActions
+    action: string
   }
 }
 
@@ -26,7 +25,7 @@ export interface OpenModalAction {
       label: string
       value?: string
     }
-    action: InputModalActions
+    action: string
   }
 }
 

@@ -4,31 +4,43 @@ import InputModal from '../../../../src/modal/components/InputModal'
 
 describe('InputModal Component', () => {
   let wrapper
-  const onCloseMock = jest.fn()
-  const onConfirmMock = jest.fn()
+  const onCloseStub = jest.fn()
+  const onConfirmStub = jest.fn()
 
   beforeEach(() => {
     const props = {
       label: 'feature',
       value: 'value',
       open: true,
-      onClose: onCloseMock,
-      onConfirm: onConfirmMock
+      onClose: onCloseStub,
+      onConfirm: onConfirmStub
     }
     wrapper = shallow(<InputModal {...props} />)
   })
 
-  test('renders label', () => {
-    expect(wrapper.find('label').text()).toEqual('feature')
+  test('sets initial value', () => {
+    wrapper.setProps({ value: 'pikachu' })
+
+    expect(wrapper.find('Autocomplete').prop('value')).toEqual('pikachu')
   })
 
-  test('sets input value', () => {
-    expect(wrapper.find('input').prop('defaultValue')).toEqual('value')
+  test('renders label', () => {
+    wrapper.setProps({ value: 'pikachu' })
+    
+    expect(wrapper.find('label').text()).toEqual('feature')
   })
 
   test('calls onClose if cancel button is clicked', () => {
     wrapper.find('.cancel-button').simulate('click')
 
-    expect(onCloseMock).toBeCalledTimes(1)
+    expect(onCloseStub).toBeCalledTimes(1)
+  })
+
+  test('calls onConfirm handler', () => {
+    wrapper.setProps({ value: 'pikachu' })
+
+    wrapper.find('.confirm-button').simulate('click')
+
+    expect(onConfirmStub).toHaveBeenCalledWith('pikachu')
   })
 })

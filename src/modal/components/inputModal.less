@@ -1,5 +1,5 @@
 @import (reference) '../../styles/variables.less';
-@import '../../styles/mixins.less';
+@import (reference) '../../styles/mixins.less';
 
 .input-modal {
   position: absolute;
@@ -24,6 +24,19 @@
 
   .modal-content {
     padding: 20px;
+
+    > div {
+      width: 100%;
+    }
+
+    .autocomplete-input-option {
+      padding: 10px 20px;
+      border-bottom: 1px dotted @dark-grey;
+
+      &.highlighted {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
 
     input {
       width: 100%;

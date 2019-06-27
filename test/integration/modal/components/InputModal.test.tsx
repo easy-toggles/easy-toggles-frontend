@@ -44,12 +44,6 @@ describe('InputModal Component', () => {
     )
   })
 
-  test('calls onConfirm handler', () => {
-    wrapper.find('.confirm-button').simulate('click')
-
-    expect(onConfirmMock).toHaveBeenCalledWith('value')
-  })
-
   test('calls onClose handler if overlay is clicked', () => {
     wrapper.find('.input-modal-overlay').simulate('click')
 
