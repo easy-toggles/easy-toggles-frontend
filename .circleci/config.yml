@@ -41,7 +41,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - build
+            - dist
   
   unit:
     <<: *defaults
@@ -71,8 +71,14 @@ workflows:
     jobs:
       - prepare
       - build
+        requires: 
+          - prepare
       - unit
+        requires: 
+          - prepare
       - integration
+        requires: 
+          - prepare
 
 
 
