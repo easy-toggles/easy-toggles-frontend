@@ -70,13 +70,13 @@ workflows:
   build_and_test:
     jobs:
       - prepare
-      - build
+      - build:
         requires: 
           - prepare
-      - unit
+      - unit:
         requires: 
           - prepare
-      - integration
+      - integration:
         requires: 
           - prepare
 
