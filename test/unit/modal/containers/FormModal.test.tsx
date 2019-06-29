@@ -1,13 +1,13 @@
 import React from 'react'
 import configureStore from 'redux-mock-store'
 import { shallow } from 'enzyme'
-import InputModal from '../../../../src/modal/containers/InputModal'
+import FormModal from '../../../../src/modal/containers/FormModal'
 import asyncMiddleware from '../../../../src/asyncMiddleware'
 import { types } from '../../../../src/modal/modalActions'
 
 const mockStore = configureStore([asyncMiddleware])
 
-describe('InputModal Container', () => {
+describe('FormModal Container', () => {
   const onCloseMock = jest.fn()
   const onConfirmMock = jest.fn()
 
@@ -25,7 +25,7 @@ describe('InputModal Container', () => {
 
   beforeEach(() => {
     store = mockStore(state)
-    wrapper = shallow(<InputModal store={store} />).dive()
+    wrapper = shallow(<FormModal store={store} />).dive()
   })
 
   test('maps state to props', () => {

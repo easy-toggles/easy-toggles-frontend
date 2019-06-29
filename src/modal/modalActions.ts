@@ -8,7 +8,7 @@ const { types, creators } = createActions('modal', {
 
 export { types, creators }
 
-export interface InputModalConfirmAction {
+export interface FormModalConfirmAction {
   type: typeof types.CONFIRM
   payload: {
     label: string

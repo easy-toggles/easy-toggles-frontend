@@ -1,8 +1,7 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import Details from '../../src/details/containers/Details'
 import App from '../../src/App'
-import InputModal from '../../src/modal/containers/InputModal'
+import FormModal from '../../src/modal/containers/FormModal'
 
 describe('App Component', () => {
   let wrapper
@@ -12,6 +11,6 @@ describe('App Component', () => {
   })
 
   test('renders input modal', () => {
-    expect(wrapper.find(InputModal).exists()).toBe(true)
+    expect(wrapper.find(FormModal).exists()).toBe(true)
   })
 })

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { HashRouter, Route } from 'react-router-dom'
-import InputModal from './modal/containers/InputModal'
+import FormModal from './modal/containers/FormModal'
 import Projects from './projects/containers/Projects'
 import Details from './details/containers/Details'
 
@@ -16,7 +16,7 @@ class App extends React.Component<{}, {}> {
         <Route exact path="/" component={Projects} />
         <Route exact path="/projects/:id" component={Details} />
 
-        <InputModal />
+        <FormModal />
       </HashRouter>
     )
   }

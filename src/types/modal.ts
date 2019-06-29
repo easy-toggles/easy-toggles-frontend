@@ -1,10 +1,10 @@
 export interface ModalState {
   open: boolean
   action?: string
-  content: InputModalContent
+  content: FormModalContent
 }
 
-export interface InputModalContent {
+export interface FormModalContent {
   label?: string
   value?: string
 }

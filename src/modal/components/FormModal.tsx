@@ -2,14 +2,13 @@ import React, { RefObject } from 'react'
 import ReactModal from 'react-modal'
 import Autocomplete from 'react-autocomplete'
 
-import './inputModal.less'
-import { render } from 'enzyme'
+import './formModal.less'
 
 if (document && document.getElementById('#root')) {
   ReactModal.setAppElement('#root')
 }
 
-class InputModal extends React.Component<Props, State> {
+class FormModal extends React.Component<Props, State> {
   private inputRef: RefObject<Autocomplete> = React.createRef()
 
   constructor(props) {
@@ -58,7 +57,7 @@ class InputModal extends React.Component<Props, State> {
             menuStyle= {menuStyle}
             inputProps={inputProps}
             renderItem={(item, highlighted) => (
-              <div key={item.id} className={`autocomplete-input-option ${highlighted && 'highlighted'}`}>
+              <div key={item.label} className={`autocomplete-input-option ${highlighted && 'highlighted'}`}>
                 {item.label}
               </div>
             )}
@@ -91,4 +90,4 @@ export interface Props {
   onConfirm: (value: string) => void
 }
 
-export default InputModal
+export default FormModal

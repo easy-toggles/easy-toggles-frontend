@@ -1,7 +1,7 @@
 // @flow
 
 import { connect } from 'react-redux'
-import InputModal, { Props } from '../components/InputModal'
+import FormModal, { Props } from '../components/FormModal'
 import { State } from '../../store'
 import { creators } from '../modalActions'
 
@@ -50,4 +50,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps
-)(InputModal)
+)(FormModal)

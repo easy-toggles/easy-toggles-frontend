@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import InputModal from '../../../../src/modal/components/InputModal'
+import FormModal from '../../../../src/modal/components/FormModal'
 
-describe('InputModal Component', () => {
+describe('FormModal Component', () => {
   let wrapper
   const onCloseStub = jest.fn()
   const onConfirmStub = jest.fn()
@@ -15,7 +15,7 @@ describe('InputModal Component', () => {
       onClose: onCloseStub,
       onConfirm: onConfirmStub
     }
-    wrapper = shallow(<InputModal {...props} />)
+    wrapper = shallow(<FormModal {...props} />)
   })
 
   test('sets initial value', () => {

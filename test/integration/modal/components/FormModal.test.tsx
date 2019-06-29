@@ -3,14 +3,14 @@ import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 import ReactModal from 'react-modal'
 import configureStore from 'redux-mock-store'
-import InputModal from '../../../../src/modal/components/InputModal'
+import FormModal from '../../../../src/modal/components/FormModal'
 import asyncMiddleware from '../../../../src/asyncMiddleware'
 
 ReactModal.setAppElement('*')
 
 const mockStore = configureStore([asyncMiddleware])
 
-describe('InputModal Component', () => {
+describe('FormModal Component', () => {
   const onCloseMock = jest.fn()
   const onConfirmMock = jest.fn()
 
@@ -39,7 +39,7 @@ describe('InputModal Component', () => {
     store = mockStore(state)
     wrapper = mount(
       <Provider store={store}>
-        <InputModal {...props} />
+        <FormModal {...props} />
       </Provider>
     )
   })
