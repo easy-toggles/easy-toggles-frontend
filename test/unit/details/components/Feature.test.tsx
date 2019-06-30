@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Feature from '../../../../src/details/components/Feature'
 import Rules from '../../../../src/details/containers/Rules'
-import DependsOn from '../../../../src/details/components/DependsOn'
+import DependsOn from '../../../../src/details/containers/DependsOn'
 import TurnsOff from '../../../../src/details/components/TurnsOff'
 import Switch from '../../../../src/components/switch/Switch'
 

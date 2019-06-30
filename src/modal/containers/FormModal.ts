@@ -1,5 +1,3 @@
-// @flow
-
 import { connect } from 'react-redux'
 import { reset, reduxForm } from 'redux-form'
 import { reduce } from 'ramda'

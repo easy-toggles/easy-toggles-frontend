@@ -1,10 +1,7 @@
 import React from 'react'
 import ActionList from '../../components/actionList/ActionList'
 import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
-
-interface Props {
-  features: string[]
-}
+import { MergeProps, OwnProps } from '../containers/DependsOn';
 
 const listDependencies = (features: string[]) => {
   return features.map((feature) => {
@@ -25,18 +22,20 @@ const buildTable = (features: string[]) => (
   </table>
 )
 
-const DependsOn = ({ features }: Props) => {
+const DependsOn = ({ features, addDependency }: Props) => {
   const props = {
     buttons: {
       add: {
         icon: 'add',
         label: 'Add dependency',
-        onClick: () => {}
+        onClick: () => addDependency()
       }
     }
   }
 
   return <ActionList {...props}>{features.length > 0 ? buildTable(features) : null}</ActionList>
 }
+
+type Props = MergeProps & OwnProps
 
 export default DependsOn

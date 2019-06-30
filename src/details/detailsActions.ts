@@ -15,20 +15,28 @@ const { types, creators } = createActions('details', {
   updateCriteriaValues: null,
   renameCriteria: null,
   startPublish: null,
+  addDependency: null,
   publish: { url: 'api/applications/:id', method: 'patch' },
   loadConfig: { url: 'api/applications/:id', method: 'get' }
 })
 
 export { types, creators }
 
+interface FormModalPayload {
+  values: {
+    [key: string]: string
+  },
+  fields: Field[]
+}
+
 export interface AddFeatureAction {
   type: typeof types.ADD_FEATURE
-  payload: {
-    values: {
-      [key: string]: string
-    },
-    fields: Field[]
-  }
+  payload: FormModalPayload
+}
+
+export interface AddDependencyAction {
+  type: typeof types.ADD_DEPENDENCY
+  payload: FormModalPayload
 }
 
 export interface DeleteFeatureAction {
@@ -48,12 +56,7 @@ export interface ToggleFeatureAction {
 
 export interface RenameFeatureAction {
   type: typeof types.RENAME_FEATURE
-  payload: {
-    values: {
-      [key: string]: string
-    },
-    fields: Field[]
-  }
+  payload: FormModalPayload
 }
 
 export interface ChangeFeatureAction {
