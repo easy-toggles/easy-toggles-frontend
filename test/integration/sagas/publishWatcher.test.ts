@@ -13,7 +13,10 @@ describe('publishWatcher', () => {
 
     return expectSaga(sagas)
       .withState({
-        details: data
+        details: {
+          ...data,
+          current: 'someFeature'
+        }
       })
       .dispatch({ type: actions.types.START_PUBLISH, payload: { id: 1 } })
       .put(actions.creators.publish(data, { id: 1 }))

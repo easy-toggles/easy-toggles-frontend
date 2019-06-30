@@ -53,6 +53,12 @@ const renameFeature = (state: State, { payload }: actions.RenameFeatureAction) =
   })
 }
 
+const changeFeature = (state: State, { payload }: actions.ChangeFeatureAction) => {
+  return produce(state, (draft) => {
+    draft.current = payload.name === draft.current ? '' : payload.name
+  })
+}
+
 const addCriteria = (state: State, { payload }: actions.AddCriteriaAction) => {
   const [feature, rule] = payload.path
 
@@ -113,6 +119,7 @@ const HANDLERS = {
   [actions.types.DELETE_FEATURE]: deleteFeature,
   [actions.types.ADD_FEATURE]: addFeature,
   [actions.types.RENAME_FEATURE]: renameFeature,
+  [actions.types.CHANGE_FEATURE]: changeFeature,
   [actions.types.ADD_RULE]: addRule,
   [actions.types.DELETE_RULE]: deleteRule,
   [actions.types.ADD_CRITERIA]: addCriteria,

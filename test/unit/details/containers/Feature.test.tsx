@@ -12,9 +12,9 @@ describe('Feature Container', () => {
   let store, wrapper
 
   beforeEach(() => {
-    const state = { details: { config: { someFeature } } }
+    const state = { details: { config: { someFeature } }, current: 'someFeature' }
     store = mockStore(state)
-    wrapper = shallow(<Feature store={store} name="someFeature" feature={someFeature} />)
+    wrapper = shallow(<Feature store={store} name="someFeature" feature={someFeature} />).dive()
   })
 
   test('dispatches toggle feature action', () => {
@@ -40,6 +40,19 @@ describe('Feature Container', () => {
     }
 
     wrapper.props().onDelete('someFeature')
+
+    expect(store.getActions()[0]).toEqual(expectedAction)
+  })
+
+  test('dispatches change feature action', () => {
+    const expectedAction = {
+      type: detailsTypes.CHANGE_FEATURE,
+      payload: {
+        name: 'someFeature'
+      }
+    }
+
+    wrapper.props().onChange('someFeature')
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })

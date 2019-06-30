@@ -7,9 +7,11 @@ import TurnsOff from '../../../../src/details/components/TurnsOff'
 import Switch from '../../../../src/components/switch/Switch'
 
 describe('Feature Component', () => {
-  const onToggleMock = jest.fn()
-  const onDeleteMock = jest.fn()
-  const onEditMock = jest.fn()
+  const onToggleStub = jest.fn()
+  const onDeleteStub = jest.fn()
+  const onEditStub = jest.fn()
+  const onChangeStub = jest.fn()
+
   const feature = {
     enabled: true,
     rules: [],
@@ -23,9 +25,11 @@ describe('Feature Component', () => {
     const props = {
       feature,
       name: 'someFeature',
-      onToggle: onToggleMock,
-      onDelete: onDeleteMock,
-      onEdit: onEditMock
+      onToggle: onToggleStub,
+      onDelete: onDeleteStub,
+      onEdit: onEditStub,
+      onChange: onChangeStub,
+      opened: false
     }
 
     wrapper = shallow(<Feature {...props} />)
@@ -53,7 +57,7 @@ describe('Feature Component', () => {
   test('calls toggle handler', () => {
     wrapper.find(Switch).simulate('change', { target: { checked: true } })
 
-    expect(onToggleMock).toHaveBeenCalledWith('someFeature', { ...feature, enabled: true })
+    expect(onToggleStub).toHaveBeenCalledWith('someFeature', { ...feature, enabled: true })
   })
 
   test('calls delete handler', () => {
@@ -62,7 +66,7 @@ describe('Feature Component', () => {
       .at(1)
       .simulate('click')
 
-    expect(onDeleteMock).toHaveBeenCalledWith('someFeature')
+    expect(onDeleteStub).toHaveBeenCalledWith('someFeature')
   })
 
   test('calls edit handler', () => {
@@ -71,6 +75,15 @@ describe('Feature Component', () => {
       .at(0)
       .simulate('click')
 
-    expect(onEditMock).toHaveBeenCalledWith('someFeature')
+    expect(onEditStub).toHaveBeenCalledWith('someFeature')
+  })
+
+  test('calls onChange handler', () => {
+    wrapper
+      .find('h2')
+      .at(0)
+      .simulate('click')
+
+    expect(onChangeStub).toHaveBeenCalledWith('someFeature')
   })
 })

@@ -95,6 +95,60 @@ describe('Details Reducer', () => {
       }
     },
     {
+      name: 'sets current feature',
+      action: {
+        payload: {
+          name: 'someFeature'
+        },
+        type: actions.types.CHANGE_FEATURE
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true
+          }
+        },
+        current: ''
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true
+          }
+        },
+        current: 'someFeature'
+      }
+    }, 
+    {
+      name: 'clears current feature',
+      action: {
+        payload: {
+          name: 'someFeature'
+        },
+        type: actions.types.CHANGE_FEATURE
+      },
+      prevState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true
+          }
+        },
+        current: 'someFeature'
+      },
+      expectedState: {
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true
+          }
+        },
+        current: ''
+      }
+    },  
+    {
       name: 'deletes feature',
       action: {
         payload: {

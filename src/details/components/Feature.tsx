@@ -7,18 +7,12 @@ import DependsOn from './DependsOn'
 import TurnsOff from './TurnsOff'
 import { Feature as FeatureData } from '../../types/project'
 import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
-import { DispatchProps } from '../containers/Feature'
+import { DispatchProps, OwnProps, StateProps } from '../containers/Feature'
 
 import '../styles/feature.less'
 
-class Feature extends React.Component<Props, State> {
-  public state: State
+class Feature extends React.Component<Props, {}> {
   public props: Props
-
-  constructor(props: Props) {
-    super(props)
-    this.state = { isOpened: false }
-  }
 
   private handleToggle(event): void {
     const enabled = event.target.checked
@@ -29,21 +23,17 @@ class Feature extends React.Component<Props, State> {
     this.props.onToggle(this.props.name, payload)
   }
 
-  private handleClick(): void {
-    this.setState({ isOpened: !this.state.isOpened })
-  }
-
   public render() {
     return (
       <React.Fragment>
         <div className="feature-item">
-          <h2 onClick={(e) => this.handleClick()}>{this.props.name}</h2>
+          <h2 onClick={(e) => this.props.onChange(this.props.name)}>{this.props.name}</h2>
           <Switch checked={this.props.feature.enabled} onChange={(e) => this.handleToggle(e)} />
           <IconButton type={IconButtonTypes.Edit} onClick={() => this.props.onEdit(this.props.name)} />
           <IconButton type={IconButtonTypes.Delete} onClick={() => this.props.onDelete(this.props.name)} />
         </div>
 
-        <UnmountClosed isOpened={this.state.isOpened}>
+        <UnmountClosed isOpened={this.props.opened}>
           <Tabs>
             <TabList>
               <Tab>Rules</Tab>
@@ -67,13 +57,6 @@ class Feature extends React.Component<Props, State> {
   }
 }
 
-interface State {
-  isOpened: boolean
-}
-
-interface Props extends DispatchProps {
-  name: string
-  feature: FeatureData
-}
+type Props = OwnProps & StateProps & DispatchProps
 
 export default Feature
