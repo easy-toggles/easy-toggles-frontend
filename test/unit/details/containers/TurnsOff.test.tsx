@@ -1,7 +1,7 @@
 import React from 'react'
 import configureStore from 'redux-mock-store'
 import { shallow } from 'enzyme'
-import DependsOn from '../../../../src/details/containers/DependsOn'
+import TurnsOff from '../../../../src/details/containers/TurnsOff'
 import asyncMiddleware from '../../../../src/asyncMiddleware'
 import { types as detailsTypes } from '../../../../src/details/detailsActions'
 import { types as modalTypes } from '../../../../src/modal/modalActions'
@@ -9,13 +9,13 @@ import * as optionsHelper from '../../../../src/libs/buildOptions'
 
 const mockStore = configureStore([asyncMiddleware])
 
-describe('DependsOn Container', () => {
+describe('TurnsOff Container', () => {
   const state = {
     details: {
       config: {
         someFeature: {
           enabled: true,
-          dependsOn: ['testFeature']
+          turnsOff: ['testFeature']
         },
         otherFeature: {
           enabled: true
@@ -35,20 +35,20 @@ describe('DependsOn Container', () => {
     jest.spyOn(optionsHelper, 'buildOptions').mockImplementation(() => options)
 
     store = mockStore(state)
-    wrapper = shallow(<DependsOn store={store} features={['testFeature']} />).dive()
+    wrapper = shallow(<TurnsOff store={store} features={['testFeature']} />).dive()
   })
 
-  test('dispatches add dependency action', () => {
+  test('dispatches add feature to turns off action', () => {
     const expectedAction = {
       type: modalTypes.OPEN,
       payload: {
-        title: 'Add dependency',
-        action: detailsTypes.ADD_DEPENDENCY,
+        title: 'Add feature to turns off',
+        action: detailsTypes.ADD_FEATURE_TO_TURNS_OFF,
         fields: [{ name: 'name', label: 'Name', type: 'select', options }]
       }
     }
 
-    wrapper.props().addDependency()
+    wrapper.props().addFeatureToTurnsOff()
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })

@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Switch from '../../components/switch/Switch'
 import Rules from '../containers/Rules'
 import DependsOn from '../containers/DependsOn'
-import TurnsOff from './TurnsOff'
+import TurnsOff from '../containers/TurnsOff'
 import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
 import { DispatchProps, OwnProps, StateProps } from '../containers/Feature'
 

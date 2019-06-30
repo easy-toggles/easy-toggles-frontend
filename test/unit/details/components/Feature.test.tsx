@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import Feature from '../../../../src/details/components/Feature'
 import Rules from '../../../../src/details/containers/Rules'
 import DependsOn from '../../../../src/details/containers/DependsOn'
-import TurnsOff from '../../../../src/details/components/TurnsOff'
+import TurnsOff from '../../../../src/details/containers/TurnsOff'
 import Switch from '../../../../src/components/switch/Switch'
 
 describe('Feature Component', () => {

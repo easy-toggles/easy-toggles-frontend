@@ -1,10 +1,9 @@
 import React from 'react'
 import ActionList from '../../components/actionList/ActionList'
 import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
+import { MergeProps } from '../containers/TurnsOff'
 
-interface Props {
-  features: string[]
-}
+type Props = MergeProps
 
 const listFeaturesToTurnOff = (features: string[]) => {
   return features.map((feature) => {
@@ -25,13 +24,13 @@ const buildTable = (features: string[]) => (
   </table>
 )
 
-const TurnsOff = ({ features }: Props) => {
+const TurnsOff = ({ features, addFeatureToTurnsOff }: Props) => {
   const props = {
     buttons: {
       add: {
         icon: 'add',
         label: 'Add feature to turn off',
-        onClick: () => {}
+        onClick: () => addFeatureToTurnsOff()
       }
     }
   }

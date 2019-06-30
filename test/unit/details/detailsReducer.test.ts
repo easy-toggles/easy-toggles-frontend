@@ -247,6 +247,55 @@ describe('Details Reducer', () => {
       }
     },
     {
+      name: 'adds feature to turns off',
+      action: {
+        payload: {
+          values: {
+            name: 'testFeature'
+          }
+        },
+        type: actions.types.ADD_FEATURE_TO_TURNS_OFF
+      },
+      prevState: {
+        current: 'someFeature',
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }],
+            turnsOff: []
+          },
+          testFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          },
+          otherFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      },
+      expectedState: {
+        current: 'someFeature',
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }],
+            turnsOff: ['testFeature']
+          },
+          testFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          },
+          otherFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      }
+    },
+    {
       name: 'delete rule',
       action: {
         payload: {

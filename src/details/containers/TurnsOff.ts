@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import DependsOn from '../components/DependsOn'
+import TurnsOff from '../components/TurnsOff'
 import { creators as modalCreators } from '../../modal/modalActions'
 import * as detailsActions from '../../details/detailsActions'
 import { Option } from '../../types/form'
@@ -13,11 +13,11 @@ const mapStateToProps = ({ details }: State, { features }: OwnProps): StateProps
 }
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
-  addDependency: (options) => () =>
+  addFeatureToTurnsOff: (options) => () =>
     dispatch(
       modalCreators.open({
-        action: detailsActions.types.ADD_DEPENDENCY,
-        title: 'Add dependency',
+        action: detailsActions.types.ADD_FEATURE_TO_TURNS_OFF,
+        title: 'Add feature to turns off',
         fields: [{ label: 'Name', name: 'name', type: 'select', options }]
       })
     )
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
 
 const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps, ownProps: OwnProps): MergeProps => ({
   ...ownProps,
-  addDependency: dispatchProps.addDependency(stateProps.options)
+  addFeatureToTurnsOff: dispatchProps.addFeatureToTurnsOff(stateProps.options)
 })
 
 interface StateProps {
@@ -33,19 +33,19 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  addDependency: (options: Option[]) => () => void
+  addFeatureToTurnsOff: (options: Option[]) => () => void
 }
 
 export interface OwnProps {
   features: string[]
 }
 
-export interface MergeProps {
-  addDependency: () => void
+export interface MergeProps extends OwnProps {
+  addFeatureToTurnsOff: () => void
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps
-)(DependsOn)
+)(TurnsOff)
