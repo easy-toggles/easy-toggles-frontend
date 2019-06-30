@@ -1,4 +1,4 @@
-import { append, reduce, pipe, filter, equals } from 'ramda'
+import { append, reduce, pipe, filter, includes } from 'ramda'
 import { connect } from 'react-redux'
 import DependsOn from '../components/DependsOn'
 import { creators as modalCreators } from '../../modal/modalActions'
@@ -6,18 +6,25 @@ import * as detailsActions from '../../details/detailsActions'
 import { Option } from '../../types/form'
 import { State } from '../../store'
 
-const getOptions = (acc: Option[], feature: string) => {
-  return append({ value: feature, label: feature }, acc)
+const buildOptions = (featureName: string, allFeatures: string[], featuresToIgnore: string[]): Option[] => {
+  const emptyItem = { value: '', label: '' }
+
+  const ignoreFeatures = append(featureName, featuresToIgnore)
+  const getOptions = (acc: Option[], feature: string) => append({ value: feature, label: feature }, acc)
+  const includesFeature = (feature: string) => !includes(feature, ignoreFeatures)
+
+  const options = pipe(
+    filter(includesFeature),
+    reduce(getOptions, [emptyItem])
+  )(allFeatures)
+
+  return options
 }
 
-const mapStateToProps = ({ details }: State): StateProps => {
-  const emptyValues = { value: '', label: '' }
-  const features = Object.keys(details.config)
-  const options = pipe(
-    filter((item: string) => item !== details.current),
-    reduce(getOptions, [emptyValues])
-  )(features)
-  return { options }
+const mapStateToProps = ({ details }: State, { features }: OwnProps): StateProps => {
+  return {
+    options: buildOptions(details.current, Object.keys(details.config), features)
+  }
 }
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({

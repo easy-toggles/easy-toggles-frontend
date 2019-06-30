@@ -13,9 +13,13 @@ describe('DependsOn Container', () => {
     details: {
       config: {
         someFeature: {
-          enabled: true
+          enabled: true,
+          dependsOn: ['testFeature']
         },
         otherFeature: {
+          enabled: true
+        },
+        testFeature: {
           enabled: true
         }
       },
@@ -27,7 +31,7 @@ describe('DependsOn Container', () => {
 
   beforeEach(() => {
     store = mockStore(state)
-    wrapper = shallow(<DependsOn store={store} />).dive()
+    wrapper = shallow(<DependsOn store={store} features={['testFeature']} />).dive()
   })
 
   test('dispatches add dependency action', () => {

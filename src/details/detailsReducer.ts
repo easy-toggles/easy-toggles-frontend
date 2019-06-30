@@ -59,6 +59,13 @@ const changeFeature = (state: State, { payload }: actions.ChangeFeatureAction) =
   })
 }
 
+const addDependency = (state: State, { payload }: actions.AddDependencyAction) => {
+  return produce(state, (draft) => {
+    const dependsOn = draft.config[draft.current]['dependsOn']
+    dependsOn.push(payload.values.name)
+  })
+}
+
 const addCriteria = (state: State, { payload }: actions.AddCriteriaAction) => {
   const [feature, rule] = payload.path
 
@@ -126,6 +133,7 @@ const HANDLERS = {
   [actions.types.DELETE_CRITERIA]: deleteCriteria,
   [actions.types.RENAME_CRITERIA]: renameCriteria,
   [actions.types.UPDATE_CRITERIA_VALUES]: updateCriteriaValues,
+  [actions.types.ADD_DEPENDENCY]: addDependency,
   [actions.types.LOAD_CONFIG.RESPONSE]: loadConfig
 }
 

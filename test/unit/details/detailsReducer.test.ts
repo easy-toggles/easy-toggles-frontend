@@ -198,6 +198,55 @@ describe('Details Reducer', () => {
       }
     },
     {
+      name: 'adds dependency',
+      action: {
+        payload: {
+          values: {
+            name: 'testFeature'
+          }
+        },
+        type: actions.types.ADD_DEPENDENCY
+      },
+      prevState: {
+        current: 'someFeature',
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }],
+            dependsOn: []
+          },
+          testFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          },
+          otherFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      },
+      expectedState: {
+        current: 'someFeature',
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }],
+            dependsOn: ['testFeature']
+          },
+          testFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          },
+          otherFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      }
+    },
+    {
       name: 'delete rule',
       action: {
         payload: {
