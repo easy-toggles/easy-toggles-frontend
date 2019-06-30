@@ -8,15 +8,19 @@ import { types } from '../../../../src/modal/modalActions'
 const mockStore = configureStore([asyncMiddleware])
 
 describe('FormModal Container', () => {
-  const onCloseMock = jest.fn()
-  const onConfirmMock = jest.fn()
-
+  const fields = [{ name: 'name', label: 'Name', type: 'text' }]
   const state = {
     modal: {
       open: true,
       action: 'SOME_ACTION',
-      content: {
-        label: 'label'
+      title: 'title',
+      fields
+    },
+    form: {
+      formModal: {
+        values: {
+          name: 'newValue'
+        }
       }
     }
   }
@@ -30,7 +34,8 @@ describe('FormModal Container', () => {
 
   test('maps state to props', () => {
     expect(wrapper.props().open).toBe(true)
-    expect(wrapper.props().label).toEqual('label')
+    expect(wrapper.props().title).toEqual('title')
+    expect(wrapper.props().fields).toEqual(fields)
   })
 
   test('dispatches on close action', () => {
@@ -43,19 +48,19 @@ describe('FormModal Container', () => {
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
-  test('dispatches custom and close actions', () => {
-    const expectedActions = [{
+  test('dispatches custom action', () => {
+    const expectedAction = {
       type: 'SOME_ACTION',
       payload: {
-        value: 'newValue'
+        fields: [{ name: 'name', label: 'Name', type: 'text'}],
+        values: {
+          name: 'newValue'
+        }
       }
-    },
-    {
-      type: types.CLOSE
-    }]
+    }
 
-    wrapper.props().onConfirm('newValue')
+    wrapper.props().onSubmit()
 
-    expect(store.getActions()).toEqual(expectedActions)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })

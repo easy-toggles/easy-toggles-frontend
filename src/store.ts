@@ -1,17 +1,19 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { reducer as formReducer } from 'redux-form'
+import thunkMiddleware from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
 import { detailsReducer, initialState as detailsInitialState } from './details/detailsReducer'
 import { projectsReducer, initialState as projectsInitialState } from './projects/projectsReducer'
 import { modalReducer, initialState as modalInitialState } from './modal/modalReducer'
-import thunkMiddleware from 'redux-thunk'
-import createSagaMiddleware from 'redux-saga'
 import asyncMidleware from './asyncMiddleware'
 import sagas from './configureSagas'
 
 const reducer = combineReducers({
   details: detailsReducer,
   projects: projectsReducer,
-  modal: modalReducer
+  modal: modalReducer,
+  form: formReducer
 })
 
 const buildInitialState = (): State => ({

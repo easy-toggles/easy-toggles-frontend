@@ -48,10 +48,8 @@ describe('Feature Container', () => {
     const expectedAction = {
       type: modalTypes.OPEN,
       payload: {
-        content: {
-          label: 'Edit feature',
-          value: 'someFeature'
-        },
+        title: 'Edit feature',
+        fields: [{ name: 'name', label: 'Name', type: 'text', value: 'someFeature' }],
         action: detailsTypes.RENAME_FEATURE
       }
     }

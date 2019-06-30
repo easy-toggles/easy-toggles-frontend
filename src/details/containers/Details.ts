@@ -15,7 +15,10 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
     dispatch(
       modalCreators.open({
         action: detailsActions.types.ADD_FEATURE,
-        content: { label: 'Add feature' }
+        title: 'Add feature',
+        fields:[
+          { label: 'Name', name: 'name', type: 'text' }
+        ]
       })
     ),
   publish: (id: number) => dispatch(detailsActions.creators.startPublish({ id }))

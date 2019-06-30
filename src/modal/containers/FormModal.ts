@@ -1,53 +1,83 @@
 // @flow
 
 import { connect } from 'react-redux'
+import { reset, reduxForm } from 'redux-form'
+import { reduce } from 'ramda'
 import FormModal, { Props } from '../components/FormModal'
 import { State } from '../../store'
 import { creators } from '../modalActions'
+import { Field } from '../../types/form'
 
-const mapStateToProps = ({
-  modal: {
+const buildInitialValues = (initialValues, field) => {
+  const value = field.value ? { [field.name]: field.value } : {}
+
+  return {
+    ...initialValues,
+    ...value
+  }
+}
+
+const mapStateToProps = ({ modal, form }: State): StateProps => {
+  const { open, action, title, fields } = modal
+  const initialValues = reduce(buildInitialValues, {}, fields)
+
+  return {
     open,
     action,
-    content: { label, value }
+    title,
+    fields,
+    values: form.formModal && (form.formModal.values || {}),
+    initialValues
   }
-}: State): StateProps => ({
-  open,
-  action,
-  label,
-  value
-})
+}
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
   onClose: () => dispatch(creators.close()),
-  onConfirm: (action, oldValue) => (newValue) => {
-    dispatch({ type: action, payload: { value: newValue, oldValue } })
+  onSubmit: (action, fields, values) => () => {
+    dispatch({ type: action, payload: { values, fields } })
     dispatch(creators.close())
+    dispatch(reset('formModal'))
   }
 })
 
-const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps): Props => ({
+const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps): MergeProps => ({
   ...dispatchProps,
   open: stateProps.open,
-  label: stateProps.label,
-  value: stateProps.value,
-  onConfirm: dispatchProps.onConfirm(stateProps.action, stateProps.value)
+  title: stateProps.title,
+  fields: stateProps.fields,
+  initialValues: stateProps.initialValues,
+  onSubmit: dispatchProps.onSubmit(stateProps.action, stateProps.fields, stateProps.values)
 })
 
 interface DispatchProps {
   onClose: () => void
-  onConfirm: (action: string, oldValue: string) => (newValue: string) => void
+  onSubmit: (action: string, fields: Field[], values: any) => () => void
 }
 
 interface StateProps {
   action: string
   open: boolean
-  label: string
-  value: string
+  title: string
+  fields: Field[]
+  values: any
+  initialValues: any
 }
+
+interface MergeProps extends Props {
+  initialValues: {
+    [key: string]: string
+  }
+}
+
+const form = reduxForm({
+  form: 'formModal',
+  keepDirtyOnReinitialize: true,
+  enableReinitialize: true,
+  forceUnregisterOnUnmount: true
+})(FormModal)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps
-)(FormModal)
+)(form)

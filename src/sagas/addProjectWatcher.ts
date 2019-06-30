@@ -1,10 +1,9 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, takeEvery, select } from 'redux-saga/effects'
 import * as actions from '../projects/projectsActions'
-import initWatcher from './initWatcher'
 
 function* addProject({ payload }) {
   const data = {
-    name: payload.value,
+    name: payload.values.name, 
     config: {}
   }
 

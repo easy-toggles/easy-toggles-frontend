@@ -46,10 +46,11 @@ describe('Details Container', () => {
     const expectedAction = {
       type: modalTypes.OPEN,
       payload: {
-        content: {
-          label: 'Add feature'
-        },
-        action: detailsTypes.ADD_FEATURE
+        title: 'Add feature',
+        action: detailsTypes.ADD_FEATURE,
+        fields: [
+          { name: 'name', label: 'Name', type: 'text' }
+        ]
       }
     }
 

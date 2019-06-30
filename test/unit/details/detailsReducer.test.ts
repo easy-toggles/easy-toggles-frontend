@@ -8,7 +8,9 @@ describe('Details Reducer', () => {
       action: {
         type: actions.types.ADD_FEATURE,
         payload: {
-          value: 'myFeature'
+          values: {
+            name: 'myFeature'
+          }
         }
       },
       prevState: {
@@ -66,8 +68,12 @@ describe('Details Reducer', () => {
       name: 'renames feature',
       action: {
         payload: {
-          oldValue: 'someFeature',
-          value: 'pokemon'
+          values: {
+            name: 'pokemon'
+          },
+          fields: [
+            { value: 'someFeature' }
+          ]
         },
         type: actions.types.RENAME_FEATURE
       },

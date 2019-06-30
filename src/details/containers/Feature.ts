@@ -10,11 +10,9 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
   onEdit: (name) =>
     dispatch(
       modalCreators.open({
-        content: {
-          label: 'Edit feature',
-          value: name
-        },
-        action: detailsActions.types.RENAME_FEATURE
+        action: detailsActions.types.RENAME_FEATURE,
+        title: 'Edit feature',
+        fields: [{ label: 'Name', name: 'name', type: 'text', value: name }]
       })
     )
 })

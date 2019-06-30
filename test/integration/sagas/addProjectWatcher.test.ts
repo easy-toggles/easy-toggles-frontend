@@ -7,7 +7,7 @@ describe('addProjectWatcher', () => {
     return expectSaga(sagas)
       .dispatch({
         type: projectsActions.types.START_ADD,
-        payload: { value: 'value' }
+        payload: { values: { name: 'value'} }
       })
       .put(projectsActions.creators.add({ name: 'value', config: {} }))
       .silentRun()

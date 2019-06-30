@@ -1,27 +1,26 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { mount } from 'enzyme'
+import { reduxForm } from 'redux-form'
 import ReactModal from 'react-modal'
+import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import FormModal from '../../../../src/modal/components/FormModal'
 import asyncMiddleware from '../../../../src/asyncMiddleware'
 
 ReactModal.setAppElement('*')
-
 const mockStore = configureStore([asyncMiddleware])
 
 describe('FormModal Component', () => {
   const onCloseMock = jest.fn()
   const onConfirmMock = jest.fn()
 
+  const fields = [{ name: 'name', label: 'lavel', type: 'text' }]
   const state = {
     modal: {
       open: true,
       action: 'addFeature',
-      content: {
-        label: 'label',
-        value: 'value'
-      }
+      title: 'title',
+      fields
     }
   }
 
@@ -29,17 +28,18 @@ describe('FormModal Component', () => {
 
   beforeEach(() => {
     const props = {
-      label: 'feature',
-      value: 'value',
+      title: 'title',
+      fields,
       open: true,
       onClose: onCloseMock,
-      onConfirm: onConfirmMock
+      onSubmit: onConfirmMock
     }
 
     store = mockStore(state)
+    const DecoratedForm = reduxForm({ form: 'testForm' })(FormModal)
     wrapper = mount(
       <Provider store={store}>
-        <FormModal {...props} />
+        <DecoratedForm {...props} />
       </Provider>
     )
   })

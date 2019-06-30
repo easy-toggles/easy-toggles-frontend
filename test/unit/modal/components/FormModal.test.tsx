@@ -5,29 +5,25 @@ import FormModal from '../../../../src/modal/components/FormModal'
 describe('FormModal Component', () => {
   let wrapper
   const onCloseStub = jest.fn()
-  const onConfirmStub = jest.fn()
+  const onSubmitStub = jest.fn()
 
   beforeEach(() => {
     const props = {
-      label: 'feature',
-      value: 'value',
+      title: 'feature',
+      fields: [{ name: 'name', label: 'label', type: 'text' }],
       open: true,
       onClose: onCloseStub,
-      onConfirm: onConfirmStub
+      onSubmit: onSubmitStub
     }
     wrapper = shallow(<FormModal {...props} />)
   })
 
-  test('sets initial value', () => {
-    wrapper.setProps({ value: 'pikachu' })
-
-    expect(wrapper.find('Autocomplete').prop('value')).toEqual('pikachu')
+  test('renders title', () => {
+    expect(wrapper.find('h4').text()).toEqual('feature')
   })
 
-  test('renders label', () => {
-    wrapper.setProps({ value: 'pikachu' })
-    
-    expect(wrapper.find('label').text()).toEqual('feature')
+  test('renders fields', () => {
+    expect(wrapper.find('Field').props().name).toEqual('name')
   })
 
   test('calls onClose if cancel button is clicked', () => {
@@ -36,11 +32,9 @@ describe('FormModal Component', () => {
     expect(onCloseStub).toBeCalledTimes(1)
   })
 
-  test('calls onConfirm handler', () => {
-    wrapper.setProps({ value: 'pikachu' })
+  test('calls onSubmit handler', () => {
+    wrapper.find('form').simulate('submit')
 
-    wrapper.find('.confirm-button').simulate('click')
-
-    expect(onConfirmStub).toHaveBeenCalledWith('pikachu')
+    expect(onSubmitStub).toHaveBeenCalled()
   })
 })

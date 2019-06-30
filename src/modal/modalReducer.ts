@@ -4,21 +4,24 @@ import { ModalState } from '../types/modal'
 
 export const initialState: ModalState = {
   open: false,
-  content: {}
+  title: '',
+  fields: []
 }
 
-const onOpenModal = (state, { payload: { action, content } }: actions.OpenModalAction) => ({
+const onOpenModal = (state, { payload: { action, title, fields } }: actions.OpenModalAction) => ({
   ...state,
   open: true,
   action,
-  content
+  title,
+  fields
 })
 
 const onCloseModal = (state) => ({
   ...state,
   open: false,
   action: null,
-  content: {}
+  fields: [],
+  title: ''
 })
 
 const HANDLERS = {

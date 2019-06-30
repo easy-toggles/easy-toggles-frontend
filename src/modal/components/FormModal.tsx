@@ -1,25 +1,36 @@
-import React, { RefObject } from 'react'
+import React from 'react'
 import ReactModal from 'react-modal'
-import Autocomplete from 'react-autocomplete'
+import { Field } from 'redux-form'
+import { Field as FieldData } from '../../types/form'
 
 import './formModal.less'
 
-if (document && document.getElementById('#root')) {
-  ReactModal.setAppElement('#root')
-}
+class FormModal extends React.Component<Props, {}> {
 
-class FormModal extends React.Component<Props, State> {
-  private inputRef: RefObject<Autocomplete> = React.createRef()
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: ''
-    }
+  componentDidMount() {
+    if (process.env.NODE_ENV !== 'test') {
+      ReactModal.setAppElement('#root')
+    } 
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    this.setState({ value: nextProps.value })
+  private renderField({ input, field }) {
+    const { type } = field
+    if (type === 'text' || type === 'email' || type === 'number' || type === 'checkbox') {
+      return <input {...input} type={type} />
+    } else if (type === 'select') {
+      const { options } = field
+      return (
+        <select name={field.name} onChange={input.onChange}>
+          {options.map((option, index) => {
+            return (
+              <option key={index} value={option.value}>
+                {option.label}
+              </option>
+            )
+          })}
+        </select>
+      )
+    }
   }
 
   render() {
@@ -30,64 +41,38 @@ class FormModal extends React.Component<Props, State> {
       onRequestClose: () => this.props.onClose()
     }
 
-    const menuStyle = {
-      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
-      background: 'rgba(255, 255, 255, 0.9)',
-      fontSize: '90%',
-      position: 'fixed',
-      overflow: 'auto',
-      maxHeight: '50%'
-    }
-
-    const inputProps = {
-      autoFocus: true
-    }
-
     return (
       <ReactModal {...props}>
-        <label htmlFor="modal-input">{this.props.label}</label>
+        <h4>{this.props.title}</h4>
         <div className="modal-content">
-          <Autocomplete
-            ref={this.inputRef}
-            items={this.props.options || []}
-            getItemValue={(item) => item.label}
-            value={this.state.value}
-            onChange={(e) => this.setState({ value: e.target.value })}
-            onSelect={(value) => this.setState({ value })}
-            menuStyle= {menuStyle}
-            inputProps={inputProps}
-            renderItem={(item, highlighted) => (
-              <div key={item.label} className={`autocomplete-input-option ${highlighted && 'highlighted'}`}>
-                {item.label}
+          <form onSubmit={this.props.onSubmit}>
+            {this.props.fields.map((field) => (
+              <div key={field.name}>
+                <label htmlFor={field.name}>{field.label}</label>
+                <Field name={field.name} component={this.renderField} field={field} />
               </div>
-            )}
-          />
-
-          <div className="action-bar">
-            <button className="outline cancel-button" onClick={(e) => this.props.onClose()}>
-              Cancel
-            </button>
-            <button className="confirm-button" onClick={(e) => this.props.onConfirm(this.state.value)}>
-              OK
-            </button>
-          </div>
+            ))}
+            <div className="action-bar">
+              <button className="outline cancel-button" onClick={(e) => this.props.onClose()}>
+                Cancel
+              </button>
+              <button className="confirm-button" type="submit">
+                OK
+              </button>
+            </div>
+          </form>
         </div>
       </ReactModal>
     )
   }
 }
 
-interface State {
-  value: string
-}
-
 export interface Props {
-  label: string
-  value: string
+  title: string
+  fields: FieldData[]
   open: boolean
-  options?: string[]
   onClose: () => void
-  onConfirm: (value: string) => void
+  onSubmit: () => void
 }
 
 export default FormModal

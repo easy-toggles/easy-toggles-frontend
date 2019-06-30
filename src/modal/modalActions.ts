@@ -1,4 +1,5 @@
 import { createActions } from 'redux-arc'
+import { Field } from '../types/form'
 
 const { types, creators } = createActions('modal', {
   open: null,
@@ -21,10 +22,8 @@ export interface FormModalConfirmAction {
 export interface OpenModalAction {
   type: typeof types.OPEN
   payload: {
-    content: {
-      label: string
-      value?: string
-    }
+    title: string
+    fields: Field[]
     action: string
   }
 }

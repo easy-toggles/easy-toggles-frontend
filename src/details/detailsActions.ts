@@ -1,5 +1,6 @@
 import { createActions } from 'redux-arc'
 import { Feature, Config } from '../types/project'
+import { Field } from '../types/form'
 
 const { types, creators } = createActions('details', {
   toggleFeature: null,
@@ -22,7 +23,10 @@ export { types, creators }
 export interface AddFeatureAction {
   type: typeof types.ADD_FEATURE
   payload: {
-    value: string
+    values: {
+      [key: string]: string
+    },
+    fields: Field[]
   }
 }
 
@@ -44,8 +48,10 @@ export interface ToggleFeatureAction {
 export interface RenameFeatureAction {
   type: typeof types.RENAME_FEATURE
   payload: {
-    oldValue: string
-    value: string
+    values: {
+      [key: string]: string
+    },
+    fields: Field[]
   }
 }
 

@@ -11,14 +11,14 @@ describe('Modal Reducer', () => {
       prevState: {
         open: true,
         action: 'addFeature',
-        content: {
-          label: 'new feature'
-        }
+        title: 'title',
+        fields: [{ label: 'label', name: 'name', type: 'text' }]
       },
       expectedState: {
         open: false,
         action: null,
-        content: {}
+        title: '',
+        fields: []
       }
     },
     {
@@ -27,22 +27,21 @@ describe('Modal Reducer', () => {
         type: actions.types.OPEN,
         payload: {
           action: 'addFeature',
-          content: {
-            label: 'new feature'
-          }
+          title: 'new feature',
+          fields: [{ name: 'name', label: 'Name', type: 'text' }]
         }
       },
       prevState: {
         open: false,
         action: null,
-        content: {}
+        title: '',
+        fields: []
       },
       expectedState: {
         open: true,
         action: 'addFeature',
-        content: {
-          label: 'new feature'
-        }
+        title: 'new feature',
+        fields: [{ name: 'name', label: 'Name', type: 'text' }]
       }
     }
   ]

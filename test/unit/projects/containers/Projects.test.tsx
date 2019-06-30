@@ -36,9 +36,8 @@ describe('Projects Container', () => {
     const expectedAction = {
       type: modalTypes.OPEN,
       payload: {
-        content: {
-          label: 'Add project'
-        },
+        title: 'Add application',
+        fields: [{ name: 'name', label: 'Name', type: 'text' }],
         action: projectsTypes.START_ADD
       }
     }

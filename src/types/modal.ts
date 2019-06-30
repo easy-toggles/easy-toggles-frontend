@@ -1,11 +1,8 @@
+import { Field } from "./form";
+
 export interface ModalState {
   open: boolean
   action?: string
-  content: FormModalContent
+  title: string
+  fields: Field[]
 }
-
-export interface FormModalContent {
-  label?: string
-  value?: string
-}
-

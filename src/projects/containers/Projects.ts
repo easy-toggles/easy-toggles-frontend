@@ -14,7 +14,8 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
     dispatch(
       modalCreators.open({
         action: projectsTypes.START_ADD,
-        content: { label: 'Add project' }
+        title: 'Add application',
+        fields: [{ label: 'Name', name: 'name', type: 'text'}]
       })
     )
 })
