@@ -9,7 +9,9 @@
     "build": "webpack --mode production",
     "test": "jest",
     "test:unit": "jest --config jest.config.unit.js",
+    "test:unit:ci": "npm run test:unit -- --runInBand",
     "test:integration": "jest --config jest.config.integration.js",
+    "test:integration:ci": "npm run test:integration -- --runInBand",
     "lint": "tslint --project tsconfig.json --config tslint.json",
     "format": "prettier-stylelint --write './src/**/*' './test/**/*' --quiet",
     "stubby": "stubby --watch --quiet --data stubby.json"

@@ -52,7 +52,7 @@ jobs:
       - attach_workspace:
           at: .
 
-      - run: npm run test:unit
+      - run: npm run test:unit:ci
 
   integration:
     <<: *defaults
@@ -63,7 +63,7 @@ jobs:
       - attach_workspace:
           at: .
 
-      - run: npm run test:integration
+      - run: npm run test:integration:ci
 
 workflows:
   version: 2
