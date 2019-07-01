@@ -66,6 +66,13 @@ const addDependency = (state: State, { payload }: actions.AddDependencyAction) =
   })
 }
 
+const deleteDependency = (state: State, { payload }: actions.DeleteDependencyAction) => {
+  return produce(state, (draft) => {
+    const dependsOn = draft.config[draft.current]['dependsOn']
+    dependsOn.splice(payload.name, 1)
+  })
+}
+
 const addFeatureToTurnsOff = (state: State, { payload }: actions.AddFeatureToTurnsOffAction) => {
   return produce(state, (draft) => {
     const turnsOff = draft.config[draft.current]['turnsOff']
@@ -141,6 +148,7 @@ const HANDLERS = {
   [actions.types.RENAME_CRITERIA]: renameCriteria,
   [actions.types.UPDATE_CRITERIA_VALUES]: updateCriteriaValues,
   [actions.types.ADD_DEPENDENCY]: addDependency,
+  [actions.types.DELETE_DEPENDENCY]: deleteDependency,
   [actions.types.ADD_FEATURE_TO_TURNS_OFF]: addFeatureToTurnsOff,
   [actions.types.LOAD_CONFIG.RESPONSE]: loadConfig
 }

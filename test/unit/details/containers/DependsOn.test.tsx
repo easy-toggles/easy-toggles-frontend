@@ -52,4 +52,17 @@ describe('DependsOn Container', () => {
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
+
+  test('dispatches delete dependency action', () => {
+    const expectedAction = {
+      type: detailsTypes.DELETE_DEPENDENCY,
+      payload: {
+        name: 'pikachu'
+      }
+    }
+
+    wrapper.props().deleteDependency('pikachu')
+
+    expect(store.getActions()[0]).toEqual(expectedAction)
+  })
 })

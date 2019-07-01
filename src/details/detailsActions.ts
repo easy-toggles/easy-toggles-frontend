@@ -16,6 +16,7 @@ const { types, creators } = createActions('details', {
   renameCriteria: null,
   startPublish: null,
   addDependency: null,
+  deleteDependency: null,
   addFeatureToTurnsOff: null,
   publish: { url: 'api/applications/:id', method: 'patch' },
   loadConfig: { url: 'api/applications/:id', method: 'get' }
@@ -38,6 +39,13 @@ export interface AddFeatureAction {
 export interface AddDependencyAction {
   type: typeof types.ADD_DEPENDENCY
   payload: FormModalPayload
+}
+
+export interface DeleteDependencyAction {
+  type: typeof types.DELETE_DEPENDENCY
+  payload: {
+    name: string
+  }
 }
 
 export interface AddFeatureToTurnsOffAction {

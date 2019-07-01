@@ -247,6 +247,55 @@ describe('Details Reducer', () => {
       }
     },
     {
+      name: 'deletes dependency',
+      action: {
+        payload: {
+          values: {
+            name: 'testFeature'
+          }
+        },
+        type: actions.types.DELETE_DEPENDENCY
+      },
+      prevState: {
+        current: 'someFeature',
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }],
+            dependsOn: ['testFeature', 'otherFeature']
+          },
+          testFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          },
+          otherFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      },
+      expectedState: {
+        current: 'someFeature',
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }],
+            dependsOn: ['otherFeature']
+          },
+          testFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          },
+          otherFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      }
+    },
+    {
       name: 'adds feature to turns off',
       action: {
         payload: {

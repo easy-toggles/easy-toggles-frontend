@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import DependsOn from '../components/DependsOn'
+import DependsOn, { Props } from '../components/DependsOn'
 import { creators as modalCreators } from '../../modal/modalActions'
 import * as detailsActions from '../../details/detailsActions'
 import { Option } from '../../types/form'
@@ -20,12 +20,14 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
         title: 'Add dependency',
         fields: [{ label: 'Name', name: 'name', type: 'select', options }]
       })
-    )
+    ),
+  deleteDependency: (dependency: string) => dispatch(detailsActions.creators.deleteDependency({name: dependency }))
 })
 
-const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps, ownProps: OwnProps): MergeProps => ({
+const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps, ownProps: OwnProps): Props => ({
   ...ownProps,
-  addDependency: dispatchProps.addDependency(stateProps.options)
+  addDependency: dispatchProps.addDependency(stateProps.options),
+  deleteDependency: dispatchProps.deleteDependency
 })
 
 interface StateProps {
@@ -34,14 +36,11 @@ interface StateProps {
 
 interface DispatchProps {
   addDependency: (options: Option[]) => () => void
+  deleteDependency: (dependency: string) => void
 }
 
 export interface OwnProps {
   features: string[]
-}
-
-export interface MergeProps {
-  addDependency: () => void
 }
 
 export default connect(
