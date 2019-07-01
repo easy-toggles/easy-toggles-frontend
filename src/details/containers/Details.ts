@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Details from '../components/Details'
 import { State } from '../../store'
-import { Config } from '../../types/project'
+import { Config } from '../../types/applications'
 import * as detailsActions from '../../details/detailsActions'
 import { creators as modalCreators } from '../../modal/modalActions'
 
@@ -10,7 +10,7 @@ const mapStateToProps = ({ details: { config } }: State): StateProps => {
 }
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
-  loadProject: (id) => dispatch(detailsActions.creators.loadConfig(null, { id })),
+  loadApplication: (id) => dispatch(detailsActions.creators.loadConfig(null, { id })),
   addFeature: () =>
     dispatch(
       modalCreators.open({
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
 })
 
 export interface DispatchProps {
-  loadProject: Function
+  loadApplication: Function
   addFeature: Function
   publish: Function
 }

@@ -1,7 +1,7 @@
 import React, { RefObject } from 'react'
 import { append } from 'ramda'
 import IconButton, { IconButtonTypes } from '../../components/iconButton/IconButton'
-import { Rule as RuleData } from '../../types/project'
+import { Rule as RuleData } from '../../types/applications'
 import InputTag from '../../components/inputTag/InputTag'
 import EditableText from '../../components/editableText/EditableText'
 

@@ -8,7 +8,7 @@ import '../styles/features.less'
 
 class Details extends React.Component<Props, {}> {
   componentDidMount() {
-    this.props.loadProject(this.props.match.params.id)
+    this.props.loadApplication(this.props.match.params.id)
   }
 
   private renderFeatures() {

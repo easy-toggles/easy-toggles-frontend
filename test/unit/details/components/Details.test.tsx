@@ -6,16 +6,16 @@ import Feature from '../../../../src/details/containers/Feature'
 import Empty from '../../../../src/components/empty/Empty'
 
 describe('Details Component', () => {
-  const loadProjectMock = jest.fn()
-  const publishMock = jest.fn()
-  const addFeatureMock = jest.fn()
+  const loadApplicationStub = jest.fn()
+  const publishStub = jest.fn()
+  const addFeatureStub = jest.fn()
   
   const buildComponent = (data = {}) => {
     const props = {
       config: data,
-      loadProject: loadProjectMock,
-      addFeature: addFeatureMock,
-      publish: publishMock,
+      loadApplication: loadApplicationStub,
+      addFeature: addFeatureStub,
+      publish: publishStub,
       match: {
         params: {
           id: 1
@@ -46,7 +46,7 @@ describe('Details Component', () => {
   test('calls change application', () => {
     const wrapper = buildComponent()
 
-    expect(loadProjectMock).toBeCalledWith(1)
+    expect(loadApplicationStub).toBeCalledWith(1)
   })
 
   test('calls publish', () => {
@@ -54,7 +54,7 @@ describe('Details Component', () => {
 
     wrapper.find('.publish-button').simulate('click')
 
-    expect(publishMock).toBeCalledTimes(1)
+    expect(publishStub).toBeCalledTimes(1)
   })
 
   test('calls add feature', () => {
@@ -62,6 +62,6 @@ describe('Details Component', () => {
 
     wrapper.find('.add-feature-button').simulate('click')
 
-    expect(addFeatureMock).toBeCalledTimes(1)
+    expect(addFeatureStub).toBeCalledTimes(1)
   })
 })

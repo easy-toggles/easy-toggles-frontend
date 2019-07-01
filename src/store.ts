@@ -4,21 +4,21 @@ import { reducer as formReducer } from 'redux-form'
 import thunkMiddleware from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
 import { detailsReducer, initialState as detailsInitialState } from './details/detailsReducer'
-import { projectsReducer, initialState as projectsInitialState } from './projects/projectsReducer'
+import { applicationsReducer, initialState as applicationsInitialState } from './applications/applicationsReducer'
 import { modalReducer, initialState as modalInitialState } from './modal/modalReducer'
 import asyncMidleware from './asyncMiddleware'
 import sagas from './configureSagas'
 
 const reducer = combineReducers({
   details: detailsReducer,
-  projects: projectsReducer,
+  applications: applicationsReducer,
   modal: modalReducer,
   form: formReducer
 })
 
 const buildInitialState = (): State => ({
   details: detailsInitialState,
-  projects: projectsInitialState,
+  applications: applicationsInitialState,
   modal: modalInitialState
 })
 

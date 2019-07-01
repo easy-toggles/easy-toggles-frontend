@@ -25,7 +25,7 @@
     },
     "response": {
       "status": 200,
-      "file": "./test/stubs/project.json"
+      "file": "./test/stubs/application.json"
     }
   },
   {

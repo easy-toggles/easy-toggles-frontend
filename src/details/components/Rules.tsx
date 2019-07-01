@@ -3,7 +3,7 @@ import shortid from 'shortid'
 import { append } from 'ramda'
 import ActionList from '../../components/actionList/ActionList'
 import Rule from '../containers/Rule'
-import { Rule as RuleData } from '../../types/project'
+import { Rule as RuleData } from '../../types/applications'
 
 interface Props {
   rules: RuleData[]

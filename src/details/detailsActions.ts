@@ -1,5 +1,5 @@
 import { createActions } from 'redux-arc'
-import { Feature, Config } from '../types/project'
+import { Feature, Config } from '../types/applications'
 import { Field } from '../types/form'
 
 const { types, creators } = createActions('details', {

@@ -1,11 +1,11 @@
 import { createReducers } from 'redux-arc'
 import produce from 'immer'
 import { curry, assoc, reduce, keys } from 'ramda'
-import { ProjectDetails } from '../types/project'
+import { ApplicationDetails } from '../types/applications'
 import * as actions from './detailsActions'
 import { State } from '../store'
 
-export const initialState: ProjectDetails = {
+export const initialState: ApplicationDetails = {
   config: {},
   name: null
 }

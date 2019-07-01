@@ -26,7 +26,7 @@ describe('Details Container', () => {
     expect(wrapper.find('Details').prop('config')).toEqual({})
   })
 
-  test('dispatches load project details action', () => {
+  test('dispatches load application details action', () => {
     const expectedAction = {
       type: detailsTypes.LOAD_CONFIG.REQUEST,
       meta: {
@@ -37,7 +37,7 @@ describe('Details Container', () => {
       payload: null
     }
 
-    wrapper.props().loadProject(3)
+    wrapper.props().loadApplication(3)
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })

@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import Feature from '../components/Feature'
 import * as detailsActions from '../detailsActions'
 import { creators as modalCreators } from '../../modal/modalActions'
-import { Feature as FeatureData } from '../../types/project'
+import { Feature as FeatureData } from '../../types/applications'
 import { State } from '../../store'
 
 const mapStateToProps = ({ details }: State, ownProps: OwnProps): StateProps => ({

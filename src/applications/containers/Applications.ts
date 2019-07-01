@@ -1,19 +1,19 @@
 import { connect } from 'react-redux'
-import Projects from '../components/Projects'
+import Applications from '../components/Applications'
 import { State } from '../../store'
-import { Project } from '../../types/project'
+import { Application } from '../../types/applications'
 import { creators as modalCreators } from '../../modal/modalActions'
-import { types as projectsTypes } from '../../projects/projectsActions'
+import { types as applicationsTypes } from '../../applications/applicationsActions'
 
-const mapStateToProps = ({ projects: { data } }: State): StateProps => {
-  return { projects: data }
+const mapStateToProps = ({ applications: { data } }: State): StateProps => {
+  return { applications: data }
 }
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
-  addProject: () =>
+  addApplication: () =>
     dispatch(
       modalCreators.open({
-        action: projectsTypes.START_ADD,
+        action: applicationsTypes.START_ADD,
         title: 'Add application',
         fields: [{ label: 'Name', name: 'name', type: 'text'}]
       })
@@ -21,14 +21,14 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
 })
 
 export interface DispatchProps {
-  addProject: () => void
+  addApplication: () => void
 }
 
 export interface StateProps {
-  projects: Project[]
+  applications: Application[]
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Projects)
+)(Applications)
