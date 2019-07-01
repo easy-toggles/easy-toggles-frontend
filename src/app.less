@@ -10,10 +10,10 @@ input {
 
 header {
   padding: 20px 20px 100px;
-  background: @primary-color;
+  background: @turquoise-base;
 
   h1 {
-    color: #fff;
+    color: @white;
     font-family: Cookie;
     font-size: 96px;
     font-weight: normal;
@@ -27,7 +27,7 @@ section {
     max-width: 1000px;
     margin: 0 auto;
     margin-bottom: 120px;
-    background: #fff;
+    background: @white;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   }
 
@@ -37,7 +37,7 @@ section {
     bottom: 0;
     width: 100%;
     padding: 20px;
-    background: white;
+    background: @white;
     box-shadow: -3px -3px 10px rgba(0, 0, 0, 0.1);
 
     > div {
@@ -59,38 +59,45 @@ button {
   align-items: center;
   padding: 10px 20px;
   border: none;
-  background: @secondary-color;
+  background: @coral-base;
   border-radius: 5px;
-  color: white;
+  color: @white;
   cursor: pointer;
   font-size: 14px;
   text-transform: uppercase;
+  transition: all 0.3s;
 
   i {
     margin-right: 10px;
   }
 
-  &.outline {
-    border: 1px solid @primary-color;
-    background: none;
-    color: @primary-color;
-    text-transform: none;
+  &:hover {
+    background-color: @coral-light;
+  }
+}
+
+button.outline {
+  border: 1px solid @turquoise-base;
+  background: none;
+  color: @turquoise-base;
+  text-transform: none;
+
+  &:hover {
+    background-color: @turquoise-lighter;
   }
 }
 
 a {
-  color: @secondary-color;
+  color: @coral-base;
 }
 
 table {
   width: 100%;
-  border: 1px dotted #c9c9c9;
+  border: 1px dotted @grey-base;
 
   tr {
-    border-bottom: 1px dotted #c9c9c9;
-
     &:nth-child(even) {
-      background: #fff;
+      background: @white;
     }
 
     th {
@@ -100,7 +107,7 @@ table {
     td,
     th {
       padding: 10px 20px;
-      border-right: 1px dotted #c9c9c9;
+      border-right: 1px dotted @grey-base;
 
       &:last-child {
         border-right: none;
@@ -112,15 +119,15 @@ table {
 
 input,
 select {
-  border: 1px dotted @dark-grey;
+  border: 1px dotted @grey-dark;
   background: none;
   border-radius: 10em;
-  color: @dark-grey;
+  color: @grey-dark;
   font-size: 16px;
   font-size: 16px;
 
   &:focus {
-    border: 1px solid @primary-color;
+    border: 1px solid @turquoise-base;
   }
 }
 
@@ -139,14 +146,14 @@ input {
   outline: 0;
 
   &::placeholder {
-    color: #c9c9c9;
+    color: @grey-light;
   }
 }
 
 button.icon-button {
   padding: 0;
   background: none;
-  color: @secondary-color;
+  color: @coral-base;
   text-transform: none;
 
   i {
