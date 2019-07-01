@@ -52,4 +52,17 @@ describe('TurnsOff Container', () => {
 
     expect(store.getActions()[0]).toEqual(expectedAction)
   })
+
+  test('dispatches delete feature to turns off action', () => {
+    const expectedAction = {
+      type: detailsTypes.DELETE_FEATURE_TO_TURNS_OFF,
+      payload: {
+        name: 'someFeature'
+      }
+    }
+
+    wrapper.props().deleteFeatureToTurnsOff('someFeature')
+
+    expect(store.getActions()[0]).toEqual(expectedAction)
+  })
 })

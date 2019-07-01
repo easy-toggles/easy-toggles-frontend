@@ -71,9 +71,7 @@ describe('Details Reducer', () => {
           values: {
             name: 'pokemon'
           },
-          fields: [
-            { value: 'someFeature' }
-          ]
+          fields: [{ value: 'someFeature' }]
         },
         type: actions.types.RENAME_FEATURE
       },
@@ -120,7 +118,7 @@ describe('Details Reducer', () => {
         },
         current: 'someFeature'
       }
-    }, 
+    },
     {
       name: 'clears current feature',
       action: {
@@ -147,7 +145,7 @@ describe('Details Reducer', () => {
         },
         current: ''
       }
-    },  
+    },
     {
       name: 'deletes feature',
       action: {
@@ -250,9 +248,7 @@ describe('Details Reducer', () => {
       name: 'deletes dependency',
       action: {
         payload: {
-          values: {
-            name: 'testFeature'
-          }
+          name: 'testFeature'
         },
         type: actions.types.DELETE_DEPENDENCY
       },
@@ -332,6 +328,53 @@ describe('Details Reducer', () => {
             enabled: true,
             rules: [{ 'some-criteria': [] }],
             turnsOff: ['testFeature']
+          },
+          testFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          },
+          otherFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      }
+    },
+    {
+      name: 'deletes feature to turns off',
+      action: {
+        payload: {
+          name: 'testFeature'
+        },
+        type: actions.types.DELETE_FEATURE_TO_TURNS_OFF
+      },
+      prevState: {
+        current: 'someFeature',
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }],
+            turnsOff: ['testFeature', 'otherFeature']
+          },
+          testFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          },
+          otherFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }]
+          }
+        }
+      },
+      expectedState: {
+        current: 'someFeature',
+        name: 'app',
+        config: {
+          someFeature: {
+            enabled: true,
+            rules: [{ 'some-criteria': [] }],
+            turnsOff: ['otherFeature']
           },
           testFeature: {
             enabled: true,

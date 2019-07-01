@@ -1,6 +1,6 @@
 import { createReducers } from 'redux-arc'
 import produce from 'immer'
-import { curry, assoc, reduce, keys } from 'ramda'
+import { curry, assoc, reduce, keys, without } from 'ramda'
 import { ApplicationDetails } from '../types/applications'
 import * as actions from './detailsActions'
 import { State } from '../store'
@@ -68,8 +68,8 @@ const addDependency = (state: State, { payload }: actions.AddDependencyAction) =
 
 const deleteDependency = (state: State, { payload }: actions.DeleteDependencyAction) => {
   return produce(state, (draft) => {
-    const dependsOn = draft.config[draft.current]['dependsOn']
-    dependsOn.splice(payload.name, 1)
+    let feature = draft.config[draft.current]
+    feature.dependsOn = without([payload.name], feature.dependsOn)
   })
 }
 
@@ -77,6 +77,13 @@ const addFeatureToTurnsOff = (state: State, { payload }: actions.AddFeatureToTur
   return produce(state, (draft) => {
     const turnsOff = draft.config[draft.current]['turnsOff']
     turnsOff.push(payload.values.name)
+  })
+}
+
+const deleteFeatureToTurnsOff = (state: State, { payload }: actions.DeleteFeatureToTurnsOffAction) => {
+  return produce(state, (draft) => {
+    let feature = draft.config[draft.current]
+    feature.turnsOff = without([payload.name], feature.turnsOff)
   })
 }
 
@@ -150,7 +157,9 @@ const HANDLERS = {
   [actions.types.ADD_DEPENDENCY]: addDependency,
   [actions.types.DELETE_DEPENDENCY]: deleteDependency,
   [actions.types.ADD_FEATURE_TO_TURNS_OFF]: addFeatureToTurnsOff,
+  [actions.types.DELETE_FEATURE_TO_TURNS_OFF]: deleteFeatureToTurnsOff,
   [actions.types.LOAD_CONFIG.RESPONSE]: loadConfig
 }
+
 
 export const detailsReducer = createReducers(initialState, HANDLERS)

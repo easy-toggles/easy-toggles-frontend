@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import TurnsOff from '../components/TurnsOff'
+import TurnsOff, { Props } from '../components/TurnsOff'
 import { creators as modalCreators } from '../../modal/modalActions'
 import * as detailsActions from '../../details/detailsActions'
 import { Option } from '../../types/form'
@@ -20,12 +20,14 @@ const mapDispatchToProps = (dispatch): DispatchProps => ({
         title: 'Add feature to turns off',
         fields: [{ label: 'Name', name: 'name', type: 'select', options }]
       })
-    )
+    ),
+  deleteFeatureToTurnsOff: (feature: string) => dispatch(detailsActions.creators.deleteFeatureToTurnsOff({ name: feature }))
 })
 
-const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps, ownProps: OwnProps): MergeProps => ({
+const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps, ownProps: OwnProps): Props => ({
   ...ownProps,
-  addFeatureToTurnsOff: dispatchProps.addFeatureToTurnsOff(stateProps.options)
+  addFeatureToTurnsOff: dispatchProps.addFeatureToTurnsOff(stateProps.options),
+  deleteFeatureToTurnsOff: dispatchProps.deleteFeatureToTurnsOff
 })
 
 interface StateProps {
@@ -34,14 +36,11 @@ interface StateProps {
 
 interface DispatchProps {
   addFeatureToTurnsOff: (options: Option[]) => () => void
+  deleteFeatureToTurnsOff: (feature: string) => void
 }
 
-export interface OwnProps {
+interface OwnProps {
   features: string[]
-}
-
-export interface MergeProps extends OwnProps {
-  addFeatureToTurnsOff: () => void
 }
 
 export default connect(
