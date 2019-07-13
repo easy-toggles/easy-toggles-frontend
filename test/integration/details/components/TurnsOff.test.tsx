@@ -9,6 +9,8 @@ const mockStore = configureStore([asyncMiddleware])
 
 describe('TurnsOff Component', () => {
   const addFeatureToTurnsOffStub = jest.fn()
+  const deleteFeatureToTurnsOffStub = jest.fn()
+
   const rule = { pokemon: ['pikachu', 'psyduck'] }
   const state = {
     details: {
@@ -25,7 +27,8 @@ describe('TurnsOff Component', () => {
   beforeEach(() => {
     const props = {
       features: ['someFeature', 'otherFeature'],
-      addFeatureToTurnsOff: addFeatureToTurnsOffStub
+      addFeatureToTurnsOff: addFeatureToTurnsOffStub,
+      deleteFeatureToTurnsOff: deleteFeatureToTurnsOffStub
     }
 
     store = mockStore(state)

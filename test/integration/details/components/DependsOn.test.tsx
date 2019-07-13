@@ -9,6 +9,8 @@ const mockStore = configureStore([asyncMiddleware])
 
 describe('DependsOn Component', () => {
   const addDependencyStub = jest.fn()
+  const deleteDependencyStub = jest.fn()
+  
   const rule = { pokemon: ['pikachu', 'psyduck'] }
   const state = {
     details: {
@@ -25,7 +27,8 @@ describe('DependsOn Component', () => {
   beforeEach(() => {
     const props = {
       features: ['someFeature', 'otherFeature'],
-      addDependency: addDependencyStub
+      addDependency: addDependencyStub,
+      deleteDependency: deleteDependencyStub
     }
 
     store = mockStore(state)
