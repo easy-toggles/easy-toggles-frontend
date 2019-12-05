@@ -24,7 +24,7 @@ const mapStateToProps = ({ modal, form }: State): StateProps => {
     action,
     title,
     fields,
-    values: form.formModal && (form.formModal.values || {}),
+    values: form.formModal?.values ?? {},
     initialValues
   }
 }
